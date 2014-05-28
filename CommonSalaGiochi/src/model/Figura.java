@@ -9,9 +9,6 @@ public enum Figura {
 	CINQUE(5, "05"),
 	SEI(6, "06"), 
 	SETTE(7, "07"), 
-	OTTO(8, "08"), 
-	NOVE(9, "09"), 
-	DIECI(10, "10"),
 	FANTE( 11,"fante"), 
 	DONNA(12, "donna"), 
 	RE(13, "re");
@@ -25,10 +22,10 @@ public enum Figura {
 	}
 
 	Figura successiva() {
-	return Figura.values()[this.ordinal()+1%13];
+	return Figura.values()[this.ordinal()+1%10];
 	}
 
 	Figura precedente() {
-	return Figura.values()[this.ordinal()-1%13];
+	return Figura.values()[this.ordinal()-1%10];
 	}
 }

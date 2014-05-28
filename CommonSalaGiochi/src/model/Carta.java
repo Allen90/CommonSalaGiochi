@@ -15,13 +15,13 @@ public class Carta implements Comparable<Carta> {
 	}
 
 	@Override
-	public int compareTo(Carta other) {
-		int diff = seme.valore - other.seme.valore;
+	public int compareTo(Carta c) {
+		int diff = seme.valore - c.seme.valore;
 		if (diff != 0) return diff;
-		return figura.valore - other.figura.valore;
+		return figura.valore - c.figura.valore;
 	}
 
-	public boolean gt(Carta other) {
-		return this.compareTo(other) >= 1;
+	public boolean gt(Carta c) {
+		return this.compareTo(c) >= 1;
 	}
 }

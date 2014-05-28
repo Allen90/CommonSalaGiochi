@@ -7,18 +7,18 @@ import eccezioni.EccezioneUtente;
 
 public class Utente {
 	
-	private static final long CREDITI_INIZIALI = 80;
+	private static final int CREDITI_INIZIALI = 80;
 	
 	private String username;
 	private String password;
 	private String nome;
 	private String cognome;
-	private long crediti;
-	private long crediti_giornalieri;
+	private int crediti;
+	private int crediti_giornalieri;
 	private Timestamp ultimaVisita;
 
 	
-	public Utente(String nome, String cognome, String username, String password, long crediti) throws EccezioneUtente {
+	public Utente(String nome, String cognome, String username, String password, int crediti) throws EccezioneUtente {
 		
 		if(username != null && username != ""
 				&& password != null && nome !=null && cognome != null) {
@@ -93,11 +93,11 @@ public class Utente {
 		this.ultimaVisita = ultimaVisita;
 	}
 
-	public long getCrediti_giornalieri() {
+	public int getCrediti_giornalieri() {
 		return crediti_giornalieri;
 	}
 
-	public void setCrediti_giornalieri(long crediti_giornalieri) {
+	public void setCrediti_giornalieri(int crediti_giornalieri) {
 		this.crediti_giornalieri = crediti_giornalieri;
 	}
 	
@@ -105,24 +105,24 @@ public class Utente {
 		crediti_giornalieri = 0;
 	}
 
-	public long getCrediti() {
+	public int getCrediti() {
 		return crediti;
 	}
 
-	public void setCrediti(long crediti) {
+	public void setCrediti(int crediti) {
 		this.crediti = crediti;
 	}
 	
-	public long aggiungiCrediti(long credits) {
+	public long aggiungiCrediti(int crediti) {
 		
-		if(credits > 0) {
-			this.crediti = this.crediti + credits;
+		if(crediti > 0) {
+			this.crediti = this.crediti + crediti;
 		}
 		
 		return this.crediti;
 	}
 	
-	public long getCreditiIniziali() {
+	public int getCreditiIniziali() {
 		return CREDITI_INIZIALI;
 	}
 	
