@@ -26,7 +26,6 @@ public class Utente {
 			this.nome = nome;
 			this.cognome = cognome;
 			
-			
 			if(crediti > 0)
 				this.crediti = crediti;
 			else this.crediti = getCreditiIniziali();
