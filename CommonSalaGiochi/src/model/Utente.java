@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import eccezioni.EccezioneUtente;
@@ -15,7 +14,7 @@ public class Utente {
 	private String cognome;
 	private int crediti;
 	private int crediti_giornalieri;
-	private Timestamp ultimaVisita;
+	private Date ultimaVisita;
 
 	
 	public Utente(String nome, String cognome, String username, String password, int crediti) throws EccezioneUtente {
@@ -27,12 +26,30 @@ public class Utente {
 			this.nome = nome;
 			this.cognome = cognome;
 			
+			
 			if(crediti > 0)
 				this.crediti = crediti;
 			else this.crediti = getCreditiIniziali();
 			
-			this.ultimaVisita = new Timestamp(new Date().getTime());
+		} else {
+			throw new EccezioneUtente(String.format("Bad user/password passed '%s'/'%s'", this.username, this.password));
+		}
+	}
+	
+	public Utente(String nome, String cognome, String username, String password, int crediti, Date ultimoLogin) throws EccezioneUtente {
+		
+		if(username != null && username != ""
+				&& password != null && nome !=null && cognome != null) {
+			this.username = username;
+			this.password = password;
+			this.nome = nome;
+			this.cognome = cognome;
 			
+			ultimaVisita = ultimoLogin;
+			
+			if(crediti > 0)
+				this.crediti = crediti;
+			else this.crediti = getCreditiIniziali();
 			
 		} else {
 			throw new EccezioneUtente(String.format("Bad user/password passed '%s'/'%s'", this.username, this.password));
@@ -43,14 +60,12 @@ public class Utente {
 		this.username = username;
 		this.password = password;
 		this.crediti = getCreditiIniziali();
-		this.ultimaVisita = new Timestamp(new Date().getTime());
 	}
 	
 	public Utente(String username) {
 		this.username = username;
 		this.password = "";
 		this.crediti = getCreditiIniziali();
-		this.ultimaVisita = new Timestamp(new Date().getTime());
 	}
 
 	public String getUsername() {
@@ -85,11 +100,11 @@ public class Utente {
 		this.cognome = cognome;
 	}
 
-	public Timestamp getUltimaVisita() {
+	public Date getUltimaVisita() {
 		return ultimaVisita;
 	}
 
-	public void setUltimaVisita(Timestamp ultimaVisita) {
+	public void setUltimaVisita(Date ultimaVisita) {
 		this.ultimaVisita = ultimaVisita;
 	}
 
@@ -113,7 +128,7 @@ public class Utente {
 		this.crediti = crediti;
 	}
 	
-	public long aggiungiCrediti(int crediti) {
+	public int aggiungiCrediti(int crediti) {
 		
 		if(crediti > 0) {
 			this.crediti = this.crediti + crediti;
