@@ -1,4 +1,4 @@
-package Tombola;
+package tombola;
 
 public class Casella {
 

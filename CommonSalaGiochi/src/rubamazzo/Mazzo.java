@@ -1,7 +1,10 @@
-package model;
+package rubamazzo;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Collections;
+
+
 
 class Mazzo {
 	
@@ -22,13 +25,13 @@ class Mazzo {
 		Collections.shuffle(carte);
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder()
-		.append("Mazzo di ").append(carte.size()).append(" carte:\n");
-		for (Carta c : carte) sb.append(c).append("\n");
-		return sb.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder sb = new StringBuilder()
+//		.append("Mazzo di ").append(carte.size()).append(" carte:\n");
+//		for (Carta c : carte) sb.append(c).append("\n");
+//		return sb.toString();
+//	}
 
 	public Carta pesca() {
 		if (carte.isEmpty())
@@ -36,13 +39,19 @@ class Mazzo {
 		return carte.removeFirst();
 	}
 
-	public Carta[] pesca(int n) {
+	public ArrayList<Carta> pesca(int n) {
 		if (n > carte.size()) {
 			String msg = String.format("Chieste %d carte da un mazzo di %d", n, carte.size());
 			throw new IllegalArgumentException(msg);
 		}
-		Carta[] arr = new Carta[n];
-		for (int i=0; i<n; i++) arr[i] = carte.removeFirst();
-		return arr;
+		ArrayList<Carta> pescate = new ArrayList<Carta>();
+		for (int i=0; i<n; i++)
+			pescate.add(carte.removeFirst());
+		return pescate;
+	}
+	
+	public boolean vuoto(){
+		if(carte.isEmpty()) return true;
+		else return false;
 	}
 }

@@ -1,4 +1,4 @@
-package model;
+package rubamazzo;
 
 public enum Figura {
 
@@ -9,9 +9,9 @@ public enum Figura {
 	CINQUE(5, "05"),
 	SEI(6, "06"), 
 	SETTE(7, "07"), 
-	FANTE( 11,"fante"), 
-	DONNA(12, "donna"), 
-	RE(13, "re");
+	FANTE( 8,"fante"), 
+	DONNA(9, "donna"), 
+	RE(10, "re");
 
 	final String nome;
 	final int valore;

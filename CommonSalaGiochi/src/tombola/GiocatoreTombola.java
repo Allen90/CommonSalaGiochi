@@ -1,9 +1,10 @@
-package model;
+package tombola;
 
 import java.util.ArrayList;
 
-import Tombola.Tabella;
-import Tombola.Tabellone;
+import model.Utente;
+
+
 
 public class GiocatoreTombola {
 	

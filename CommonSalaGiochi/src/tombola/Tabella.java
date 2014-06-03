@@ -1,6 +1,9 @@
-package Tombola;
+package tombola;
 
 import java.util.Random;
+
+import tombola.Casella;
+import tombola.Tabellone;
 
 public class Tabella {
 	

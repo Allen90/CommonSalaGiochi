@@ -1,4 +1,4 @@
-package model;
+package rubamazzo;
 
 public enum Seme {
 

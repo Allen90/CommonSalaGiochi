@@ -1,6 +1,9 @@
-package Tombola;
+package tombola;
 
 import java.util.Scanner;
+
+import tombola.Tabella;
+import tombola.Tabellone;
 
 public class TestTombola {
 

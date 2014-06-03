@@ -1,4 +1,4 @@
-package model;
+package slot;
 
 public class Rollata {
 	private int premio;
