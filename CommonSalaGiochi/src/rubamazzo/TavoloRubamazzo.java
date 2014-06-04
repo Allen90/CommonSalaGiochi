@@ -11,6 +11,9 @@ public class TavoloRubamazzo {
 	private Mazzo mazzo = null;
 	private boolean finePartita;
 	
+	public ArrayList<GiocatoreRubamazzo> getGiocatori(){
+		return giocatori;
+	}
 	
 	public TavoloRubamazzo(ArrayList<GiocatoreRubamazzo> giocatori){
 		finePartita = false;

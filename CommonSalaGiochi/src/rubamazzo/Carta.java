@@ -18,21 +18,17 @@ public class Carta{
 	}
 	
 	public boolean confronta(Carta c){
-		if(figura == c.figura) return true;
-		else return false;
+		return figura == c.figura;
 	}
 	
-	public boolean confronta(ArrayList<Carta> carta){
+	public boolean confronta(ArrayList<Carta> carte){
 		int somma = 0;
-		for(Carta c: carta)
+		for(Carta c: carte)
 			somma += c.figura.valore;
-		if(figura.valore == somma)	return true;
-		else return false;
+		return figura.valore == somma;
 	}
 	
 	public boolean confrontaCarta(Carta c){
-		if(c.seme == seme && c.figura == figura)
-			return true;
-		else return false;
+		return (c.seme == seme && c.figura == figura);
 	}
 }

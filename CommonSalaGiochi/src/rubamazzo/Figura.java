@@ -17,15 +17,15 @@ public enum Figura {
 	final int valore;
 
 	private Figura(int v, String n) {
-	nome = n;
-	valore = v;
+		nome = n;
+		valore = v;
 	}
 
 	Figura successiva() {
-	return Figura.values()[this.ordinal()+1%10];
+		return Figura.values()[this.ordinal()+1%10];
 	}
 
 	Figura precedente() {
-	return Figura.values()[this.ordinal()-1%10];
+		return Figura.values()[this.ordinal()-1%10];
 	}
 }

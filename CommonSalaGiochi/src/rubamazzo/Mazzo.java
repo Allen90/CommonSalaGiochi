@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
 
-
-
 class Mazzo {
 	
-	private LinkedList<Carta> carte;
+	private LinkedList<Carta> carte = null;
 	
 	private Mazzo() {
 		carte = new LinkedList<>();
@@ -24,14 +22,6 @@ class Mazzo {
 	void mescola() {
 		Collections.shuffle(carte);
 	}
-
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder()
-//		.append("Mazzo di ").append(carte.size()).append(" carte:\n");
-//		for (Carta c : carte) sb.append(c).append("\n");
-//		return sb.toString();
-//	}
 
 	public Carta pesca() {
 		if (carte.isEmpty())
@@ -51,7 +41,6 @@ class Mazzo {
 	}
 	
 	public boolean vuoto(){
-		if(carte.isEmpty()) return true;
-		else return false;
+		return carte.isEmpty();
 	}
 }
