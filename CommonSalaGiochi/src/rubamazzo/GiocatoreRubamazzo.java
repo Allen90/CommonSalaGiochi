@@ -47,7 +47,9 @@ public class GiocatoreRubamazzo {
 		bottino.addAll(0,nuovoBottino);
 	}
 	
-	
+	public void azzeraBottino(){
+		bottino.removeAll(bottino);
+	}
 	
 	public void pesca(Mazzo m) {
 		mano.add(m.pesca());

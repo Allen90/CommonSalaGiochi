@@ -15,6 +15,10 @@ public class TavoloRubamazzo {
 		return giocatori;
 	}
 	
+	public boolean isFinita(){
+		return finePartita;
+	}
+	
 	public TavoloRubamazzo(ArrayList<GiocatoreRubamazzo> giocatori){
 		finePartita = false;
 		mazzo = Mazzo.nuovo();
@@ -86,6 +90,7 @@ public class TavoloRubamazzo {
 			bottino = new ArrayList<Carta>();
 			bottino.add(giocata);
 			bottino.add(inBanco);
+			banco.remove(inBanco);
 			giocante.aggiungiBottino(bottino);
 		}
 	}
@@ -99,6 +104,7 @@ public class TavoloRubamazzo {
 			bottino = new ArrayList<Carta>();
 			bottino.add(giocata);
 			bottino.addAll(inBanco);
+			banco.removeAll(inBanco);
 			giocante.aggiungiBottino(bottino);
 		}
 	}
@@ -112,6 +118,7 @@ public class TavoloRubamazzo {
 			bottino = new ArrayList<Carta>();
 			bottino.add(giocata);
 			bottino.addAll(bersaglio.getBottino());
+			bersaglio.azzeraBottino();
 			giocante.aggiungiBottino(bottino);
 		}
 	}
