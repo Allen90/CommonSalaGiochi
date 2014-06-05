@@ -3,12 +3,12 @@ package rubamazzo;
 public enum Figura {
 
 	ASSO(1, "asso"),
-	DUE(2, "02"), 
-	TRE(3, "03"), 
-	QUATTRO(4, "04"), 
-	CINQUE(5, "05"),
-	SEI(6, "06"), 
-	SETTE(7, "07"), 
+	DUE(2, "2"), 
+	TRE(3, "3"), 
+	QUATTRO(4, "4"), 
+	CINQUE(5, "5"),
+	SEI(6, "6"), 
+	SETTE(7, "7"), 
 	FANTE( 8,"fante"), 
 	DONNA(9, "donna"), 
 	RE(10, "re");
