@@ -8,13 +8,14 @@ public class Tabellone {
 	
 	private Casella numeri[][] = new Casella[9][10];
 	Random estrattore = new Random();
-	int estratti = 0;
+	private int estratti = 0;
+	private int ultimoEstratto = 0;
 
 	public Tabellone(){
 		riempi();
 		estratti = 0;
 	}
-	
+		
 	public void resetta(){
 		riempi();
 		estratti = 0;
@@ -22,6 +23,10 @@ public class Tabellone {
 	
 	public Casella[][] getTabellone(){
 		return numeri;
+	}
+	
+	public int getUltimoEstratto(){
+		return ultimoEstratto;
 	}
 	
 	private void riempi(){
@@ -40,6 +45,7 @@ public class Tabellone {
 		}while(numeri[decine][unita-1].isEstratto());
 		numeri[decine][unita-1].setEstratto(true);;
 		estratti ++;
+		ultimoEstratto = estratto;
 		return estratto;
 	}	
 	

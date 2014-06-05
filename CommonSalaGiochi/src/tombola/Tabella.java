@@ -38,9 +38,7 @@ public class Tabella {
 		return tabella[riga][colonna].getNumero();
 	}
 	
-	public void setEstratto(int riga, int colonna, boolean estratto){
-		tabella[riga][colonna].setEstratto(estratto);
-	}
+	
 	
 	public boolean isEstratto(int riga, int colonna){
 		return tabella[riga][colonna].isEstratto();
@@ -57,7 +55,11 @@ public class Tabella {
 		}
 	}
 	
-	public void setEstratto(int estratto){
+	public void setEstratto(int riga, int colonna, boolean estratto){
+		tabella[riga][colonna].setEstratto(estratto);
+	}
+	
+	public void controllaEstratto(int estratto){
 		for(int i = 0; i<3; i++)
 			for(int j = 0; j<9; j++)
 				if(getNumero(i, j) == estratto)

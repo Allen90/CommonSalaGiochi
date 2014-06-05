@@ -12,14 +12,17 @@ public class GiocatoreTombola {
 	private Utente utente = null;
 	private Tabellone tabellone = null;
 	
-	
 	public GiocatoreTombola(ArrayList<Tabella> cartelle, Utente giocatore ){
 		this.utente = giocatore;
 		this.cartelle = new ArrayList<Tabella>(cartelle);
 	}
 	
-	public void aggiornaTabellone(Tabellone t){
-		tabellone = t;
+	public int getNCartelle(){
+		return cartelle.size();
+	}
+	
+	public void controllaEstratto(int estratto, int indice){
+		cartelle.get(indice).controllaEstratto(estratto);
 	}
 	
 	public Utente getUtente(){
