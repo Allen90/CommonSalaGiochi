@@ -2,6 +2,8 @@ package rubamazzo;
 
 import java.util.ArrayList;
 
+import javax.crypto.AEADBadTagException;
+
 import eccezioni.EccezioneRubamazzo;
 
 public class TavoloRubamazzo {
@@ -142,4 +144,37 @@ public class TavoloRubamazzo {
 			giocatori.get(i).aggiungiBottino(bottino);
 		}
 	}
+	
+	public ArrayList<String> getVincitore(){
+		int max = 0, size = 0;
+		ArrayList<String> vincitori = new ArrayList<>();
+		for(GiocatoreRubamazzo g : giocatori){
+			try {
+				size = g.getBottino().size();
+			}catch(EccezioneRubamazzo e){
+				size = 0;
+			}
+			if(max > size) max = size;
+		}
+		for(GiocatoreRubamazzo g : giocatori){
+			try {
+				size = g.getBottino().size();
+			} catch (EccezioneRubamazzo e) {
+				size = 0;
+			}
+			if(size == max)
+				vincitori.add(g.getUtente().getUsername());
+		}
+		return vincitori;
+	}
+	
+	public int getPremio(){
+		return 20*giocatori.size()/getVincitore().size();
+	}
 }
+
+
+
+
+
+
