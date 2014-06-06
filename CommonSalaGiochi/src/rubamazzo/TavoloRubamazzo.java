@@ -79,7 +79,7 @@ public class TavoloRubamazzo {
 	public void daGiocatoreABanco(Carta giocata, String username){
 		int i;
 		for(i = 0; i < giocatori.size(); i++)
-			if(giocatori.get(i).getUtente().equals(username))
+			if(giocatori.get(i).getUtente().getUsername().equals(username))
 				break;
 		giocatori.get(i).giocaCarta(giocata);
 		banco.add(giocata);
@@ -96,7 +96,7 @@ public class TavoloRubamazzo {
 			throw new EccezioneRubamazzo("Mossa non legale!");	
 		else{
 			for(i = 0; i < giocatori.size(); i++)
-				if(giocatori.get(i).getUtente().equals(username))
+				if(giocatori.get(i).getUtente().getUsername().equals(username))
 					break;
 			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
@@ -114,7 +114,7 @@ public class TavoloRubamazzo {
 			throw new EccezioneRubamazzo("Mossa non legale!");	
 		else{
 			for(i = 0; i < giocatori.size(); i++)
-				if(giocatori.get(i).getUtente().equals(username))
+				if(giocatori.get(i).getUtente().getUsername().equals(username))
 					break;
 			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
@@ -132,7 +132,7 @@ public class TavoloRubamazzo {
 			throw new EccezioneRubamazzo("Mossa non legale!");	
 		else{
 			for(i = 0; i < giocatori.size(); i++)
-				if(giocatori.get(i).getUtente().equals(username))
+				if(giocatori.get(i).getUtente().getUsername().equals(username))
 					break;
 			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
