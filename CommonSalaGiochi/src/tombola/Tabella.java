@@ -11,7 +11,7 @@ public class Tabella {
 	private Random r = new Random();
 	private Tabellone t;
 	private int[] vincente;
-
+	
 	public Tabella(){
 		for(int i=0; i<3; i++)
 			vincente[i] = 0;
@@ -72,6 +72,7 @@ public class Tabella {
 		else return numeroTrue;
 	}
 	
+	//TODO: controllo per le tombolel
 	private void setVincente(){
 		int contaTrue = 0;
 		for(int i = 0; i < 3; i++)
@@ -84,7 +85,9 @@ public class Tabella {
 			}else vincente[i] = 1;
 	}
 	
-	
+	public void rigaVinta(int i){
+		vincente[i] = 1;
+	}
 	
 	public int[] getVincente(){
 		return vincente;
