@@ -18,6 +18,10 @@ public class Mossa {
 		return carteBersaglio.get(0);
 	}
 	
+	public Carta getCartaGiocata(){
+		return giocata;
+	}
+	
 	public ArrayList<Carta> getCarteBersaglio(){
 		return carteBersaglio;
 	}
