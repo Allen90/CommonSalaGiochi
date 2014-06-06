@@ -26,6 +26,17 @@ public class SituazioneRubamazzo {
 		numeroPartita = n;
 	}
 	
+	public void aggiornaSituazione(GiocatoreRubamazzo g,TavoloRubamazzo t){
+		mano = g.getMano();
+		for(GiocatoreRubamazzo i: t.getGiocatori())
+			try {
+				bottini.add(i.getPrimaBottino());
+			} catch (EccezioneRubamazzo e) {
+				Carta c = null;
+				bottini.add(c);
+			}
+	}
+	
 	public int getPartita(){
 		return numeroPartita;
 	}
