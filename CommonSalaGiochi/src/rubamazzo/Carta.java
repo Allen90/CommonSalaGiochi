@@ -1,6 +1,7 @@
 package rubamazzo;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 public class Carta{
@@ -11,10 +12,15 @@ public class Carta{
 		figura = f;
 		seme = s;
 	}
+	
+	public Carta(String figura, String seme){
+		this.figura = Figura.valueOf(figura);
+		this.seme = Seme.valueOf(seme);
+	}
 
 	@Override
 	public String toString() {
-		return String.format("%s[%s]", seme.nome, figura.nome);
+		return String.format("%s#%s", seme.nome, figura.nome);
 	}
 	
 	public boolean confronta(Carta c){

@@ -2,8 +2,6 @@ package rubamazzo;
 
 import java.util.ArrayList;
 
-import javax.crypto.AEADBadTagException;
-
 import eccezioni.EccezioneRubamazzo;
 
 public class TavoloRubamazzo {
@@ -170,6 +168,12 @@ public class TavoloRubamazzo {
 	
 	public int getPremio(){
 		return 20*giocatori.size()/getVincitore().size();
+	}
+	
+	public ArrayList<Carta> getBanco() throws EccezioneRubamazzo{
+		if(banco.isEmpty()) 
+			throw new EccezioneRubamazzo("Banco vuoto!");
+		else return banco;
 	}
 }
 

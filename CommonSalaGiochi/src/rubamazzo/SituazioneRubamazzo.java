@@ -9,6 +9,7 @@ public class SituazioneRubamazzo {
 	private int numeroPartita = 0;
 	private ArrayList<Carta> mano = null;
 	private ArrayList<Carta> bottini = null;
+	private ArrayList<Carta> banco = null;
 	private String username = null;
 	boolean abilitato = false;
 	
@@ -23,6 +24,11 @@ public class SituazioneRubamazzo {
 				Carta c = null;
 				bottini.add(c);
 			}
+		try {
+			banco = tavolo.getBanco();
+		} catch (EccezioneRubamazzo e) {
+			banco = null;
+		}
 		numeroPartita = n;
 	}
 	
@@ -59,5 +65,9 @@ public class SituazioneRubamazzo {
 	
 	public ArrayList<Carta> getBottini(){
 		return bottini;
+	}
+	
+	public ArrayList<Carta> getBanco(){
+		return banco;
 	}
 }
