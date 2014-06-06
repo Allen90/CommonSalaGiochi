@@ -76,54 +76,70 @@ public class TavoloRubamazzo {
 		return ok;		
 	}
 	
-	public void daGiocatoreABanco(Carta giocata, int giocante){
-		giocatori.get(giocante).giocaCarta(giocata);
+	public void daGiocatoreABanco(Carta giocata, String username){
+		int i;
+		for(i = 0; i < giocatori.size(); i++)
+			if(giocatori.get(i).getUtente().equals(username))
+				break;
+		giocatori.get(i).giocaCarta(giocata);
 		banco.add(giocata);
 		if(giocata.figura.valore == 1){
-			giocatori.get(giocante).aggiungiBottino(banco);
+			giocatori.get(i).aggiungiBottino(banco);
 			banco.removeAll(banco);
 		}
 	}
 	
-	public void daBancoAGiocatore(Carta giocata, Carta inBanco, int giocante) throws EccezioneRubamazzo{
+	public void daBancoAGiocatore(Carta giocata, Carta inBanco, String username) throws EccezioneRubamazzo{
+		int i;
 		ArrayList<Carta> bottino = null;
 		if(!controllaMossa(giocata, inBanco)) 
 			throw new EccezioneRubamazzo("Mossa non legale!");	
 		else{
-			giocatori.get(giocante).giocaCarta(giocata);
+			for(i = 0; i < giocatori.size(); i++)
+				if(giocatori.get(i).getUtente().equals(username))
+					break;
+			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
 			bottino.add(giocata);
 			bottino.add(inBanco);
 			banco.remove(inBanco);
-			giocatori.get(giocante).aggiungiBottino(bottino);
+			giocatori.get(i).aggiungiBottino(bottino);
 		}
 	}
 	
-	public void daBancoAGiocatore(Carta giocata, ArrayList<Carta> inBanco, int giocante) throws EccezioneRubamazzo{
+	public void daBancoAGiocatore(Carta giocata, ArrayList<Carta> inBanco, String username) throws EccezioneRubamazzo{
+		int i;
 		ArrayList<Carta> bottino = null;
 		if(!controllaMossa(giocata, inBanco)) 
 			throw new EccezioneRubamazzo("Mossa non legale!");	
 		else{
-			giocatori.get(giocante).giocaCarta(giocata);
+			for(i = 0; i < giocatori.size(); i++)
+				if(giocatori.get(i).getUtente().equals(username))
+					break;
+			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
 			bottino.add(giocata);
 			bottino.addAll(inBanco);
 			banco.removeAll(inBanco);
-			giocatori.get(giocante).aggiungiBottino(bottino);
+			giocatori.get(i).aggiungiBottino(bottino);
 		}
 	}
 	
-	public void daGiocatoreAGiocatore(int giocante, Carta giocata, GiocatoreRubamazzo bersaglio) throws EccezioneRubamazzo{
+	public void daGiocatoreAGiocatore(String username, Carta giocata, int bersaglio) throws EccezioneRubamazzo{
+		int i;
 		ArrayList<Carta> bottino = null;
-		if(!controllaMossa(giocata, bersaglio))
+		if(!controllaMossa(giocata, giocatori.get(bersaglio)))
 			throw new EccezioneRubamazzo("Mossa non legale!");	
 		else{
-			giocatori.get(giocante).giocaCarta(giocata);
+			for(i = 0; i < giocatori.size(); i++)
+				if(giocatori.get(i).getUtente().equals(username))
+					break;
+			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
 			bottino.add(giocata);
-			bottino.addAll(bersaglio.getBottino());
-			bersaglio.azzeraBottino();
-			giocatori.get(giocante).aggiungiBottino(bottino);
+			bottino.addAll(giocatori.get(bersaglio).getBottino());
+			giocatori.get(bersaglio).azzeraBottino();
+			giocatori.get(i).aggiungiBottino(bottino);
 		}
 	}
 }
