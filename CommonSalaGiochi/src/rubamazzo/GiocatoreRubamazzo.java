@@ -2,7 +2,7 @@ package rubamazzo;
 
 import java.util.ArrayList;
 
-import model.Utente;
+import userModel.Utente;
 import eccezioni.EccezioneRubamazzo;
 
 public class GiocatoreRubamazzo {

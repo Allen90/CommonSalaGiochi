@@ -2,7 +2,7 @@ package tombola;
 
 import java.util.ArrayList;
 
-import model.Utente;
+import userModel.Utente;
 
 
 

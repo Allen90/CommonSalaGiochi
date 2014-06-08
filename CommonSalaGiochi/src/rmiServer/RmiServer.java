@@ -1,8 +1,11 @@
-package model;
+package rmiServer;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import rmiClient.ClientRMI;
+import userModel.Utente;
+import userModel.UtenteReg;
 import eccezioni.EccezioneUtente;
 
 public interface RmiServer extends Remote{

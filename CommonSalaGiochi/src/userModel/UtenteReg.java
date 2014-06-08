@@ -1,4 +1,4 @@
-package model;
+package userModel;
 
 public class UtenteReg {
 	private String username,password,passwordConf,nome,cognome;

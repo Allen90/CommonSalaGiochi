@@ -1,4 +1,4 @@
-package model;
+package rmiClient;
 
 import java.rmi.*;
 
