@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.util.ArrayList;
 
 import eccezioni.EccezioneClassificaVuota;
+import rubamazzo.Mossa;
 import rubamazzo.SituazioneRubamazzo;
 import rubamazzo.TavoloRubamazzo;
 import slot.Rollata;
@@ -17,5 +18,7 @@ public interface RmiTaskControl extends Remote{
 	public SituazioneRubamazzo aggRubaMazzo();
 	public ArrayList<Utente> aggClass() throws EccezioneClassificaVuota;
 	public ArrayList<Utente> aggClassGiorn() throws EccezioneClassificaVuota;
+	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga);
+	public boolean mossaRubamazzo(Mossa m,int numPartita);
 	public void termina();
 	}
