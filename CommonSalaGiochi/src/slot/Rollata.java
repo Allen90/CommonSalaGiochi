@@ -1,13 +1,16 @@
 package slot;
 
 public class Rollata {
+	
 	private int premio;
 	private int crediti;
 	private int[] comb;
+	private boolean valida;
 	
-	public Rollata(){
-		
+	public Rollata(boolean valida){
+		this.valida = valida;
 	}
+	
 	public int getPremio() {
 		return premio;
 	}
@@ -25,6 +28,10 @@ public class Rollata {
 	}
 	public void setComb(int[] comb2) {
 		this.comb = comb2;
+	}
+
+	public boolean isValida() {
+		return valida;
 	}
 	
 }

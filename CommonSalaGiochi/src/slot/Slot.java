@@ -10,15 +10,6 @@ public class Slot {
 		j = Jackpot.getInstance();
 	}
 	
-	public String calcolaCombinazioneToString(){		
-		int[] combinazione = c.calcola();
-		String output = null; 
-		
-		for(int i = 0; i < 3; i++)
-			output += combinazione[i]+"#";
-		return output;		
-	}
-	
 	public int[] calcolaCombinazione(){		
 		int[] combinazione = c.calcola();
 		return combinazione;		
@@ -37,15 +28,4 @@ public class Slot {
 		return premio;
 	}
 	
-	public String getStringaPremio(){
-		String output = null;
-		if(getPremio(false) >= 0){
-			if(getPremio(false) >= 100)
-				output += "JACKPOT#";
-			else output += "VINTO#";
-		}
-		else output += "PERSO#";
-		output += getPremio(false)+"#";
-		return output;
-	}
 }
