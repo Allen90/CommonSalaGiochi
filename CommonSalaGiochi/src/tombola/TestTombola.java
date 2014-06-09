@@ -5,6 +5,8 @@ import java.util.Scanner;
 import tombola.Tabella;
 import tombola.Tabellone;
 
+@SuppressWarnings(value = { "all" })
+
 public class TestTombola {
 
 	public static void main(String[] args) {

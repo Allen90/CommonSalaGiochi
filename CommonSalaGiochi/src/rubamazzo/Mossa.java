@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Mossa {
 
 	private int tipoMossa = 0;
-	private String username = null;
 	private Carta giocata = null;
 	private ArrayList<Carta> carteBersaglio = null;
 	int giocatoreBersaglio = -1;
@@ -30,30 +29,26 @@ public class Mossa {
 		return giocatoreBersaglio;
 	}
 	
-	public Mossa(int tipo, String username, Carta giocata){
+	public Mossa(int tipo, Carta giocata){
 		tipoMossa = tipo;
-		this.username = username;
 		this.giocata = giocata;
 	}
 	
-	public Mossa(int tipo, String username, Carta giocata, Carta bersaglio){
+	public Mossa(int tipo, Carta giocata, Carta bersaglio){
 		tipoMossa = tipo;
-		this.username = username;
 		this.giocata = giocata;
 		carteBersaglio = new ArrayList<>();
 		carteBersaglio.add(bersaglio);	
 	}
 	
-	public Mossa(int tipo, String username, Carta giocata, ArrayList<Carta> bersaglio){
+	public Mossa(int tipo, Carta giocata, ArrayList<Carta> bersaglio){
 		tipoMossa = tipo;
-		this.username = username;
 		this.giocata = giocata;
 		carteBersaglio = bersaglio;	
 	}
 	
-	public Mossa(int tipo, String username, Carta giocata, int bersaglio){
+	public Mossa(int tipo, Carta giocata, int bersaglio){
 		tipoMossa = tipo;
-		this.username = username;
 		this.giocata = giocata;
 		giocatoreBersaglio = bersaglio;
 	}

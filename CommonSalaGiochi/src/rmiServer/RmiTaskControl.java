@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import eccezioni.EccezioneClassificaVuota;
 import rubamazzo.Mossa;
 import rubamazzo.SituazioneRubamazzo;
-import rubamazzo.TavoloRubamazzo;
 import slot.Rollata;
-import tombola.GiocatoreTombola;
 import tombola.SituazioneTombola;
 import userModel.Utente;
 
@@ -21,4 +19,4 @@ public interface RmiTaskControl extends Remote{
 	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga);
 	public boolean mossaRubamazzo(Mossa m,int numPartita);
 	public void termina();
-	}
+}

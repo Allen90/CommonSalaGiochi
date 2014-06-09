@@ -4,13 +4,10 @@ import java.util.ArrayList;
 
 import userModel.Utente;
 
-
-
 public class GiocatoreTombola {
 	
 	private ArrayList<Tabella> cartelle = null;
 	private Utente utente = null;
-	private Tabellone tabellone = null;
 	
 	public GiocatoreTombola(ArrayList<Tabella> cartelle, Utente giocatore ){
 		this.utente = giocatore;
