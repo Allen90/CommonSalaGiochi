@@ -28,4 +28,15 @@ public class Slot {
 		return premio;
 	}
 	
+	public String getStringaPremio(){
+		int premio = getPremio(false);
+		if(premio >= 100){
+			return "JACKPOT#";
+		}else if(premio == 0){
+			return "PERSO#";
+		}else{
+			return "VINTO#";
+		}
+	}
+	
 }

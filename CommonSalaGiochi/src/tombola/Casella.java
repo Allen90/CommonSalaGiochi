@@ -10,6 +10,11 @@ public class Casella {
 		estratto = false;
 	}
 
+	public Casella (String numero, String estratto){
+		this.numero = Integer.parseInt(numero);
+		this.estratto = Boolean.parseBoolean(estratto);  
+	}
+	
 	public int getNumero() {
 		return numero;
 	}

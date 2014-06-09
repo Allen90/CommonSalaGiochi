@@ -6,6 +6,9 @@ public class Rollata {
 	private int crediti;
 	private int[] comb;
 	private boolean valida;
+	private String vincita;
+	
+	
 	
 	public Rollata(boolean valida){
 		this.valida = valida;
@@ -32,6 +35,14 @@ public class Rollata {
 
 	public boolean isValida() {
 		return valida;
+	}
+
+	public String getVincita() {
+		return vincita;
+	}
+
+	public void setVincita(String vincita) {
+		this.vincita = vincita;
 	}
 	
 }
