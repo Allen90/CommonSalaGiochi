@@ -3,12 +3,12 @@ package rmiServer;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import rmiClient.ClientRMI;
+import rmiClient.ClientRmi;
 import userModel.Utente;
 import userModel.UtenteReg;
 import eccezioni.EccezioneUtente;
 
 public interface RmiServer extends Remote{
-	public RmiTaskControl login(ClientRMI c, Utente u);
-	public RmiTaskControl registra(ClientRMI c, UtenteReg u) throws EccezioneUtente, RemoteException;
+	public RmiTaskControl login(ClientRmi c, Utente u) throws RemoteException;
+	public RmiTaskControl registra(ClientRmi c, UtenteReg u) throws EccezioneUtente, RemoteException;
 }
