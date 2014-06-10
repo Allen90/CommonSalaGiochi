@@ -9,6 +9,25 @@ public class Mossa {
 	private ArrayList<Carta> carteBersaglio = null;
 	int giocatoreBersaglio = -1;
 	
+	public Mossa(Carta giocata, Carta bersaglio){
+		tipoMossa = 0;
+		this.giocata = giocata;
+		carteBersaglio = new ArrayList<>();
+		carteBersaglio.add(bersaglio);	
+	}
+	
+	public Mossa(Carta giocata, ArrayList<Carta> bersaglio){
+		tipoMossa = 1;
+		this.giocata = giocata;
+		carteBersaglio = bersaglio;	
+	}
+	
+	public Mossa(Carta giocata, int bersaglio){
+		tipoMossa = 2;
+		this.giocata = giocata;
+		giocatoreBersaglio = bersaglio;
+	}
+	
 	public int getTipoMossa(){
 		return tipoMossa;
 	}
@@ -34,22 +53,5 @@ public class Mossa {
 		this.giocata = giocata;
 	}
 	
-	public Mossa(int tipo, Carta giocata, Carta bersaglio){
-		tipoMossa = tipo;
-		this.giocata = giocata;
-		carteBersaglio = new ArrayList<>();
-		carteBersaglio.add(bersaglio);	
-	}
-	
-	public Mossa(int tipo, Carta giocata, ArrayList<Carta> bersaglio){
-		tipoMossa = tipo;
-		this.giocata = giocata;
-		carteBersaglio = bersaglio;	
-	}
-	
-	public Mossa(int tipo, Carta giocata, int bersaglio){
-		tipoMossa = tipo;
-		this.giocata = giocata;
-		giocatoreBersaglio = bersaglio;
-	}
+
 }

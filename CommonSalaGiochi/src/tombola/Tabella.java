@@ -20,14 +20,14 @@ public class Tabella {
 		tabella = new Casella[N_RIGHE][N_COLONNE];
 		vincente = new int[N_RIGHE];
 		r = new Random();		
-		
-		
-		
+
+
 		for(int i=0; i<N_RIGHE; i++)
 			vincente[i] = 0;	
-			
+
 		Tabellone t = new Tabellone();
 		int estratto = 0;
+		
 		for(int decina=0; decina<N_COLONNE; decina++)
 			for(int j=0; j<N_RIGHE; j++){
 				tabella[j][decina].setNumero(t.estraiDaDecina(decina));
@@ -116,6 +116,8 @@ public class Tabella {
 				vincente[i] = statusVincita(contaTrue);
 				contaTrue = 0;
 			}else vincente[i] = 1;
+		
+		
 	}
 	
 	public void rigaVinta(int i){

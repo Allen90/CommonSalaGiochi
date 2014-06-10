@@ -19,7 +19,7 @@ public class Carta{
 
 	@Override
 	public String toString() {
-		return String.format("%s#%s", seme.nome, figura.nome);
+		return String.format("%s#%s#", seme.nome, figura.nome);
 	}
 	
 	public boolean confronta(Carta c){
