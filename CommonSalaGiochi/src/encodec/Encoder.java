@@ -21,7 +21,7 @@ public class Encoder {
 	
 	public static final String clientAggiornaRubamazzo = "AGGRUBAMAZZO\n";
 	public static final String clientAggiornaTombola = "AGGTOMBOLA\n";
-	public static final String clientAggiornaClassifica = "AGGCLASSIFICA\n";
+	public static final String clientAggiornaClassifica = "AGGCLASS\n";
 	public static final String clientAggiornaCrediti = "AGGCREDITI\n";
 	
 	public static String clientLogin(String username, String password){
@@ -63,7 +63,7 @@ public class Encoder {
 	public static String serverClassifica(ArrayList<Utente> classifica, boolean giorn){
 		String output = new String(ok);
 		int i = 1;
-		output += "CLASSIFICA#";		
+		output += "CLASSIFICA#";
 		for(Utente u : classifica){
 			output += i + "#" + u.getUsername() + "#";
 			if(giorn)

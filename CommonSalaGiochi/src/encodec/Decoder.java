@@ -3,17 +3,20 @@ package encodec;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import rubamazzo.MossaSocket;
 import rubamazzo.SituazioneRubamazzo;
 import slot.Rollata;
 import tombola.SituazioneTombola;
+import tombola.Vincita;
 import userModel.InfoHome;
 import userModel.Login;
 import userModel.Registrazione;
-import userModel.Utente;
 
 public class Decoder {
 	
 	private static StringTokenizer st;
+	
+	//DECODE GENERALI
 	
 	public static String getTipoAzione(String s){
 		st = new StringTokenizer(s,"#");
@@ -59,21 +62,25 @@ public class Decoder {
 	
 	public static ArrayList<String> clientClassificaGlobale(String s){
 		st = new StringTokenizer(s,"#");
-		ArrayList<String> classifica = null;
+		ArrayList<String> classifica = new ArrayList<>();
+		st.nextToken();		//rimuovo tag OK
+		st.nextToken();		//rimuovo tag CLASSIFICA
+		while(st.hasMoreTokens())
+			classifica.add(st.nextToken() + "°\t" + st.nextToken() + "\t" + st.nextToken());
 		return classifica;
 	}
 	
-	public static SituazioneTombola clientAggTombola(String s){
+	public static ArrayList<String> clientClassificaGiornaliera(String s){
 		st = new StringTokenizer(s,"#");
-		SituazioneTombola situazione = null;
-		return situazione;
+		ArrayList<String> classifica = new ArrayList<>();
+		st.nextToken();		//rimuovo tag OK
+		st.nextToken();		//rimuovo tag CLASSIFICA
+		while(st.hasMoreTokens())
+			classifica.add(st.nextToken() + "°\t" + st.nextToken() + "\t" + st.nextToken());
+		return classifica;
 	}
 	
-	public static SituazioneRubamazzo clientAggRubamazzo(String s){
-		st = new StringTokenizer(s,"#");
-		SituazioneRubamazzo situazione = null;
-		return situazione;
-	}
+	//SLOT MACHINE
 	
 	public static Rollata clientRollata(String s){
 		st = new StringTokenizer(s,"#");
@@ -89,6 +96,44 @@ public class Decoder {
 			rollata.setCrediti(Integer.parseInt(st.nextToken()));
 		}
 		return rollata;
+	}
+	
+	//TOMBOLA
+	
+	public static int serverGiocoTombola(String s){
+		st = new StringTokenizer(s,"#");
+		st.nextToken();		//rimuovo tag GIOCOTOMBOLA
+		return Integer.parseInt(st.nextToken());
+	}
+	
+	public static SituazioneTombola clientAggTombola(String s){ 	//TODO
+		st = new StringTokenizer(s,"#");
+		SituazioneTombola situazione = null;
+		return situazione;
+	}
+	
+	public static Vincita serverVincitaTombola(String s){ 	//TODO
+		st = new StringTokenizer(s,"#");
+		Vincita vincita = null;
+		return vincita;
+	}
+	
+	public static void clientGiocoTombola(String s){
+		//TODO 
+	}
+	
+	//RUBAMAZZO
+	
+	public static SituazioneRubamazzo clientAggRubamazzo(String s){	//TODO
+		st = new StringTokenizer(s,"#");
+		SituazioneRubamazzo situazione = null;
+		return situazione;
+	}
+
+	public static MossaSocket serverMossarubamazzo(String s){ 	//TODO
+		st = new StringTokenizer(s,"#");
+		MossaSocket mossa = null;
+		return mossa;
 	}
 	
 	
