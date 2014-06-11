@@ -23,5 +23,5 @@ public interface RmiTaskControl extends Remote{
 	public void termina();
 	public boolean giocoTombola(int numCartelle) throws EccezioneUtente;
 	public boolean giocoRubamazzo() throws EccezioneUtente;
-	public InfoHome getInfoHome();
+	public InfoHome getInfoHome() throws EccezioneUtente;
 }
