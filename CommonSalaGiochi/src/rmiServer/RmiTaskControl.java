@@ -9,6 +9,7 @@ import rubamazzo.Mossa;
 import rubamazzo.SituazioneRubamazzo;
 import slot.Rollata;
 import tombola.SituazioneTombola;
+import userModel.InfoHome;
 import userModel.Utente;
 
 public interface RmiTaskControl extends Remote{
@@ -22,4 +23,5 @@ public interface RmiTaskControl extends Remote{
 	public void termina();
 	public boolean giocoTombola(int numCartelle) throws EccezioneUtente;
 	public boolean giocoRubamazzo() throws EccezioneUtente;
+	public InfoHome getInfoHome();
 }
