@@ -6,6 +6,8 @@ import java.util.StringTokenizer;
 import rubamazzo.SituazioneRubamazzo;
 import slot.Rollata;
 import tombola.SituazioneTombola;
+import userModel.InfoHome;
+import userModel.Login;
 import userModel.Registrazione;
 import userModel.Utente;
 
@@ -13,24 +15,45 @@ public class Decoder {
 	
 	private static StringTokenizer st;
 	
-	public static String getAzione(String s){
+	public static String getTipoAzione(String s){
 		st = new StringTokenizer(s,"#");
-		String output = null;
-		
+		String output = st.nextToken();
 		return output;
 	}
 	
-	public static Utente clientLogin(String s){
+	public static InfoHome clientAccesso(String s){ //sia login che registrazione
 		st = new StringTokenizer(s,"#");
-		Utente u = null;
-		
-		return u;
+		InfoHome i = null;
+		if(st.nextToken().equals("OK")){
+			String nome = st.nextToken();
+			String cognome = st.nextToken();
+			int crediti = Integer.parseInt(st.nextToken());
+			int posizione = Integer.parseInt(st.nextToken());
+			i = new InfoHome(nome,cognome,crediti,posizione);
+		}
+		return i;
 	}
 	
-	public static Registrazione clientRegistra(String s){
-		st = new StringTokenizer(s,"#");
-		Registrazione r = null;
+	public static Login serverLogin(String s){
+		st.nextToken(); // rimuovo il token del tipoazione
 		
+		String username = st.nextToken();
+		String password = st.nextToken();
+			
+		Login l = new Login(username, password);
+		return l;
+	}
+	
+	public static Registrazione serverRegistra(String s){
+		st.nextToken(); // rimuovo il token del tipoazione
+		
+		String username = st.nextToken();
+		String password = st.nextToken();
+		String passConf = st.nextToken();
+		String nome = st.nextToken();
+		String cognome = st.nextToken();
+			
+		Registrazione r = new Registrazione(username, password, passConf, nome, cognome);
 		return r;
 	}
 	
@@ -54,7 +77,17 @@ public class Decoder {
 	
 	public static Rollata clientRollata(String s){
 		st = new StringTokenizer(s,"#");
-		Rollata rollata = null;
+		Rollata rollata = new Rollata(st.nextToken().equals("OK"));
+		int[] combinazione;
+		if(rollata.isValida()){
+			combinazione = new int[3];
+			for(int i = 0; i<3; i++)
+				combinazione[i] = Integer.parseInt(st.nextToken());
+			rollata.setComb(combinazione);
+			rollata.setVincita(st.nextToken());
+			rollata.setPremio(Integer.parseInt(st.nextToken()));
+			rollata.setCrediti(Integer.parseInt(st.nextToken()));
+		}
 		return rollata;
 	}
 	

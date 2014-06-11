@@ -7,9 +7,7 @@ public class Rollata {
 	private int[] comb;
 	private boolean valida;
 	private String vincita;
-	
-	
-	
+		
 	public Rollata(boolean valida){
 		this.valida = valida;
 	}
