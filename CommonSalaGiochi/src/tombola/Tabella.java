@@ -8,9 +8,10 @@ import tombola.Tabellone;
 
 public class Tabella {
 	
-	private final int N_RIGHE = 3;
-	private final int N_COLONNE = 9;
-	private final int N_VUOTI = 4;
+	public static final int N_RIGHE = 3;
+	public static final int N_COLONNE = 9;
+	public static final int N_VUOTI = 4;
+	public static final int DIM_TAB = N_COLONNE * N_RIGHE;
 	
 	private Casella tabella[][];
 	private Random r;

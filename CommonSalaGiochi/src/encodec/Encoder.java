@@ -8,6 +8,7 @@ import rubamazzo.SituazioneRubamazzo;
 import slot.Rollata;
 import tombola.SituazioneTombola;
 import tombola.Tabella;
+import userModel.EntryClassifica;
 import userModel.Utente;
 
 public class Encoder {
@@ -60,16 +61,13 @@ public class Encoder {
 		return output;
 	}
 	
-	public static String serverClassifica(ArrayList<Utente> classifica, boolean giorn){
+	public static String serverClassifica(ArrayList<EntryClassifica> classifica){
 		String output = new String(ok);
 		int i = 1;
 		output += "CLASSIFICA#";
-		for(Utente u : classifica){
-			output += i + "#" + u.getUsername() + "#";
-			if(giorn)
-				output += u.getCrediti_giornalieri() + "#";
-			else
-				output += u.getCrediti() + "#";
+		for(EntryClassifica e : classifica){
+			output += i + "#" + e.getNome() + "#";
+			output += e.getCrediti() + "#";
 		}
 		output += "\n";
 		return output;
@@ -128,18 +126,22 @@ public class Encoder {
 	
 	public static String serverAggiornaRubamazzo(SituazioneRubamazzo s){
 		String output = new String(ok);
+		output += s.getPartita() + "#";
+		output += s.getUsername() + "#";
+		output += s.getAbilitato() + "#";
 		for(Carta c : s.getMano())
 			output += c.toString() + "#";
 		for(Carta c : s.getBottini())
 			output += c.toString() + "#";
 		for(Carta c : s.getBanco())
 			output +=c.toString() + "#";
-		output += s.getAbilitato() + "\n";
+		output += "\n";
 		return output;
 	}
 	
-	public static String clientMossaRubamazzo(Mossa m){
+	public static String clientMossaRubamazzo(Mossa m, int nPartita){
 		String output = new String("MOSSA#");
+		output += nPartita + "#";
 		output += m.getTipoMossa() + "#";
 		output += m.getCartaGiocata() + "#";
 		switch(m.getTipoMossa()){
@@ -170,16 +172,10 @@ public class Encoder {
 		return output;
 	}
 	
-	public static String clientVintoTombola(int nPartita, int tipoVittoria, int cartella, int riga){
-		String output = new String(ok);
-		output += "VINTOTOMBOLA#" + nPartita + "#" + tipoVittoria + "#" + cartella + "#" + riga + "\n";
-		return output;
-	}
-	
-	
-	
 	public static String serverAggiornaTombola(SituazioneTombola s){
 		String output = new String(ok);
+		output += s.getNumeroPartita() + "#";
+		output += s.getUsername() + "#";
 		output += s.getTabelle().size() + "#";
 		for(Tabella t: s.getTabelle()){
 			output += t.toString();
@@ -190,6 +186,12 @@ public class Encoder {
 		for(int i = 0; i<s.getPremiDisponibili().length; i++)
 			output += s.getPremiDisponibili()[i] + "#";
 		output += "\n";
+		return output;
+	}
+	
+	public static String clientVintoTombola(int nPartita, int tipoVittoria, int cartella, int riga){
+		String output = new String(ok);
+		output += "VINTOTOMBOLA#" + nPartita + "#" + tipoVittoria + "#" + cartella + "#" + riga + "\n";
 		return output;
 	}
 	

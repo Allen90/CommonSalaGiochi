@@ -11,7 +11,7 @@ public class Vincita {
 		this.numPartita = numPartita;
 		this.indiceCartella = indiceCartella;
 		this.indiceRiga = indiceRiga;
-		this.tipoVincita = tipoVincita;
+		this.tipoVincita = tipoVittoria;
 	}
 
 	public int getTipoVincita() {
@@ -30,6 +30,5 @@ public class Vincita {
 	public int getIndiceRiga() {
 		return indiceRiga;
 	}
-
 	
 }

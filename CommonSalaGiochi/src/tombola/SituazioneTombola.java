@@ -18,12 +18,23 @@ public class SituazioneTombola {
 		this.numeroPartita = numeroPartita;
 	}
 	
+	public SituazioneTombola (Tabellone tabellone, String username, ArrayList<Tabella> cartelle, boolean[] premiDisponibili, int numeroPartita){
+		this.cartelle = cartelle;
+		this.tabellone = tabellone;
+		this.username = username;
+		this.premiDisponibili = premiDisponibili;
+		this.numeroPartita = numeroPartita;
+	}
+	
+	
 	public void aggiornaSituazione(Tabellone tabellone, GiocatoreTombola giocatore, boolean[] premiDisponibili){
 		cartelle = giocatore.getCartelle();
 		this.tabellone = tabellone;
 		username = new String(giocatore.getUtente().getUsername());
 		this.premiDisponibili = premiDisponibili;
 	}
+	
+	
 	
 	public int getNumeroPartita() {
 		return numeroPartita;
@@ -52,5 +63,6 @@ public class SituazioneTombola {
 	public boolean[] getPremiDisponibili() {
 		return premiDisponibili;
 	}
+	
 	
 }

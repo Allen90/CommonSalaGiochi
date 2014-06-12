@@ -1,14 +1,15 @@
 package tombola;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import tombola.Casella;
 
 public class Tabellone { 
 	
-	private final int N_RIGHE = 9;
-	private final int N_COLONNE = 10;
-	private final int DIM_TAB = N_COLONNE * N_RIGHE;
+	public static final int N_RIGHE = 9;
+	public static final int N_COLONNE = 10;
+	public static final int DIM_TAB = N_COLONNE * N_RIGHE;
 	
 	private Casella numeri[][];
 	private Random estrattore;
@@ -23,7 +24,20 @@ public class Tabellone {
 		ultimoEstratto = 0;
 
 	}
+	
+	public Tabellone(ArrayList<Casella> numeri, int estratti, int ultimoEstratto){
+		estrattore = new Random();
+		this.estratti = estratti;
+		this.ultimoEstratto = ultimoEstratto;
 		
+		int indice = 0;
+		for(int i=0;i<N_RIGHE;i++)
+			for(int j=0;j<N_COLONNE;j++){
+				this.numeri[i][j] = numeri.get(indice);
+				indice ++;
+			}
+	}
+	
 	public void resetta(){
 		riempi();
 		estratti = 0;
@@ -73,6 +87,8 @@ public class Tabellone {
 				output += numeri[i][j].getNumero() + "#";
 				output += numeri[i][j].isEstratto() + "#";
 			}
+		output += estratti + "#";
+		output += ultimoEstratto + "#";
 		return output;
 	}
 	

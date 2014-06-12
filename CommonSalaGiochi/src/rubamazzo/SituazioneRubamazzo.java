@@ -31,6 +31,17 @@ public class SituazioneRubamazzo {
 		}
 		numeroPartita = n;
 	}
+
+	public SituazioneRubamazzo(String username, ArrayList<Carta> mano, ArrayList<Carta> bottini, ArrayList<Carta> banco, int n, boolean abilitato){
+		this.mano = mano;
+		this.username = username;
+		this.banco = banco;
+		this.bottini = bottini;
+		this.mano = mano;
+		numeroPartita = n;
+		this.abilitato = abilitato;
+	}
+
 	
 	public void aggiornaSituazione(GiocatoreRubamazzo g,TavoloRubamazzo t){
 		mano = g.getMano();
