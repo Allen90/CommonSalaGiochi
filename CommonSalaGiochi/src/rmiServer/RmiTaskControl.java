@@ -9,6 +9,7 @@ import rubamazzo.Mossa;
 import rubamazzo.SituazioneRubamazzo;
 import slot.Rollata;
 import tombola.SituazioneTombola;
+import userModel.EntryClassifica;
 import userModel.InfoHome;
 import userModel.Utente;
 
@@ -16,8 +17,8 @@ public interface RmiTaskControl extends Remote{
 	public Rollata rolla();
 	public SituazioneTombola aggTombola();
 	public SituazioneRubamazzo aggRubaMazzo();
-	public ArrayList<Utente> aggClass() throws EccezioneClassificaVuota;
-	public ArrayList<Utente> aggClassGiorn() throws EccezioneClassificaVuota;
+	public ArrayList<EntryClassifica> aggClass() throws EccezioneClassificaVuota;
+	public ArrayList<EntryClassifica> aggClassGiorn() throws EccezioneClassificaVuota;
 	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga);
 	public boolean mossaRubamazzo(Mossa m,int numPartita);
 	public void termina();

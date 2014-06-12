@@ -198,4 +198,12 @@ public class Encoder {
 	public static String clientGiocoTombola(int nCartelle){
 		return "GIOCOTOMBOLA#" + nCartelle + "\n";
 	}
+	
+	public static String serverResponseVintoTombola(Boolean valido){
+		if(valido)
+			return ok;
+		else return ko;
+	}
+	
+	
 }
