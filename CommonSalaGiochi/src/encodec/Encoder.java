@@ -176,7 +176,6 @@ public class Encoder {
 		String output = new String(ok);
 		output += s.getNumeroPartita() + "#";
 		output += s.getUsername() + "#";
-		output += s.getCreditiVinti() + "#";
 		output += s.getTabelle().size() + "#";
 		for(Tabella t: s.getTabelle()){
 			output += t.toString();

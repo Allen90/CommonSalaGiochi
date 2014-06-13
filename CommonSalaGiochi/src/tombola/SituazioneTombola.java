@@ -9,7 +9,8 @@ public class SituazioneTombola {
 	private Tabellone tabellone = null;
 	private String username = null;
 	private boolean[] premiDisponibili;
-	private int creditiVinti;
+
+	
 	
 	public SituazioneTombola (Tabellone tabellone, GiocatoreTombola giocatore, boolean[] premiDisponibili, int numeroPartita){
 		cartelle = giocatore.getCartelle();
@@ -17,28 +18,16 @@ public class SituazioneTombola {
 		username = new String(giocatore.getUtente().getUsername());
 		this.premiDisponibili = premiDisponibili;
 		this.numeroPartita = numeroPartita;
-		creditiVinti = 0;
 	}
 	
-	public SituazioneTombola (Tabellone tabellone, GiocatoreTombola giocatore, boolean[] premiDisponibili, int numeroPartita, int creditiVinti){
-		cartelle = giocatore.getCartelle();
-		this.tabellone = tabellone;
-		username = new String(giocatore.getUtente().getUsername());
-		this.premiDisponibili = premiDisponibili;
-		this.numeroPartita = numeroPartita;
-		this.creditiVinti = creditiVinti;
-	}
-	
-	public SituazioneTombola (Tabellone tabellone, String username, ArrayList<Tabella> cartelle, boolean[] premiDisponibili, int numeroPartita, int creditiVinti){
+	public SituazioneTombola (Tabellone tabellone, String username, ArrayList<Tabella> cartelle, boolean[] premiDisponibili, int numeroPartita){
 		this.cartelle = cartelle;
 		this.tabellone = tabellone;
 		this.username = username;
 		this.premiDisponibili = premiDisponibili;
 		this.numeroPartita = numeroPartita;
-		this.creditiVinti = creditiVinti;
 	}
-	
-	
+
 	public void aggiornaSituazione(Tabellone tabellone, GiocatoreTombola giocatore, boolean[] premiDisponibili){
 		cartelle = giocatore.getCartelle();
 		this.tabellone = tabellone;
@@ -74,10 +63,6 @@ public class SituazioneTombola {
 
 	public boolean[] getPremiDisponibili() {
 		return premiDisponibili;
-	}
-
-	public int getCreditiVinti() {
-		return creditiVinti;
 	}
 	
 	
