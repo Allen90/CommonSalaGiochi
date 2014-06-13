@@ -16,24 +16,24 @@ public class Encoder {
 	public static final String ok = "OK#";
 	public static final String ko = "KO#";
 	
-	public static final String clientTermina = "TERMINA\n";
-	public static final String clientGiocoRumbamazzo = "GIOCORUBAMAZZO\n";
-	public static final String clientRolla = "ROLLA\n";
+	public static final String clientTermina = "TERMINA";
+	public static final String clientGiocoRumbamazzo = "GIOCORUBAMAZZO";
+	public static final String clientRolla = "ROLLA";
 	
-	public static final String clientAggiornaRubamazzo = "AGGRUBAMAZZO\n";
-	public static final String clientAggiornaTombola = "AGGTOMBOLA\n";
-	public static final String clientAggiornaClassifica = "AGGCLASS\n";
-	public static final String clientAggiornaCrediti = "AGGCREDITI\n";
+	public static final String clientAggiornaRubamazzo = "AGGRUBAMAZZO";
+	public static final String clientAggiornaTombola = "AGGTOMBOLA";
+	public static final String clientAggiornaClassifica = "AGGCLASS";
+	public static final String clientAggiornaCrediti = "AGGCREDITI";
 	
 	public static String clientLogin(String username, String password){
 		String output = new String();
-		output += "LOGIN#" + username + "#" + password + "\n";
+		output += "LOGIN#" + username + "#" + password;
 		return output;
 	}
 	
 	public static String clientRegistra(String username, String password, String confPassword, String nome, String cognome){
 		String output = new String();
-		output += "REGISTRA#" + username + "#" + password + "#" + confPassword + "#" + nome + "#" + cognome + "\n";
+		output += "REGISTRA#" + username + "#" + password + "#" + confPassword + "#" + nome + "#" + cognome;
 		return output;
 	}
 	
@@ -45,7 +45,7 @@ public class Encoder {
 					+utente.getCrediti()+"#"+utente.getUltimaVisita()+"#"+posizione;
 		}else{
 			output = new String(ko);
-			output += "LOGINERR\n";
+			output += "LOGINERR";
 		}
 		return output;
 	}
@@ -56,7 +56,7 @@ public class Encoder {
 			output = serverLogin(utente, posizione,valido);
 		}else{
 			output = new String(ko);
-			output += "REGERR\n";
+			output += "REGERR";
 		}
 		return output;
 	}
@@ -69,7 +69,6 @@ public class Encoder {
 			output += i + "#" + e.getNome() + "#";
 			output += e.getCrediti() + "#";
 		}
-		output += "\n";
 		return output;
 	}
 	
@@ -90,10 +89,10 @@ public class Encoder {
 			
 			output += r.getVincita();
 			output += r.getPremio() + "#";
-			output += r.getCrediti() + "\n";
+			output += r.getCrediti();
 		}else{
 			output = new String(ko) + "NOCREDITI#";
-			output += r.getCrediti()+ "\n";
+			output += r.getCrediti();
 		}
 		return output;
 	}
@@ -104,10 +103,10 @@ public class Encoder {
 		String output;
 		if(valido){
 			output = new String(ok);
-			output += "INCODA#\n";
+			output += "INCODA#";
 		}else{
 			output = new String(ko);
-			output += "NOCREDITI#" + crediti + "\n"; 
+			output += "NOCREDITI#" + crediti; 
 		}
 		return output;
 	}
@@ -116,10 +115,10 @@ public class Encoder {
 		String output;
 		if(valida){
 			output = new String(ok);
-			output += "MOSSALEGALE\n";
+			output += "MOSSALEGALE";
 		}else{
 			output = new String(ko);
-			output += "MOSSAILLEGALE\n";
+			output += "MOSSAILLEGALE";
 		}
 		return output;
 	}
@@ -135,7 +134,6 @@ public class Encoder {
 			output += c.toString() + "#";
 		for(Carta c : s.getBanco())
 			output +=c.toString() + "#";
-		output += "\n";
 		return output;
 	}
 	
@@ -153,7 +151,6 @@ public class Encoder {
 		case 2: 
 			output += m.getGiocatoreBersaglio() + "#";
 		}
-		output += "\n";
 		return output;
 	}
 	
@@ -164,10 +161,10 @@ public class Encoder {
 		String output;
 		if(valido){
 			output = new String(ok);
-			output += "INCODA#\n";
+			output += "INCODA#";
 		}else{
 			output = new String(ko);
-			output += "NOCREDITI#" + crediti + "\n"; 
+			output += "NOCREDITI#" + crediti; 
 		}
 		return output;
 	}
@@ -184,19 +181,18 @@ public class Encoder {
 		}
 		output += s.getTabellone().toString();
 		for(int i = 0; i<s.getPremiDisponibili().length; i++)
-			output += s.getPremiDisponibili()[i] + "#";
-		output += "\n";
+			output += s.getPremiDisponibili()[i] + "#";;
 		return output;
 	}
 	
 	public static String clientVintoTombola(int nPartita, int tipoVittoria, int cartella, int riga){
 		String output = new String(ok);
-		output += "VINTOTOMBOLA#" + nPartita + "#" + tipoVittoria + "#" + cartella + "#" + riga + "\n";
+		output += "VINTOTOMBOLA#" + nPartita + "#" + tipoVittoria + "#" + cartella + "#" + riga;
 		return output;
 	}
 	
 	public static String clientGiocoTombola(int nCartelle){
-		return "GIOCOTOMBOLA#" + nCartelle + "\n";
+		return "GIOCOTOMBOLA#" + nCartelle;
 	}
 	
 	public static String serverResponseVintoTombola(Boolean valido){
