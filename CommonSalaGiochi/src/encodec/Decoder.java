@@ -3,7 +3,6 @@ package encodec;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import org.omg.CORBA.NVList;
 
 import rubamazzo.Carta;
 import rubamazzo.Mossa;
@@ -19,7 +18,6 @@ import userModel.EntryClassifica;
 import userModel.InfoHome;
 import userModel.Login;
 import userModel.Registrazione;
-import userModel.Utente;
 
 public class Decoder {
 
@@ -47,9 +45,10 @@ public class Decoder {
 	}
 
 	public static Login serverLogin(String s){
-		st.nextToken(); // rimuovo il token del tipoazione
+		System.out.println("stringa da decodec" + s);
 
 		String username = st.nextToken();
+		
 		String password = st.nextToken();
 
 		Login l = new Login(username, password);
@@ -57,7 +56,7 @@ public class Decoder {
 	}
 
 	public static Registrazione serverRegistra(String s){
-		st.nextToken(); // rimuovo il token del tipoazione
+		//st.nextToken(); // rimuovo il token del tipoazione
 
 		String username = st.nextToken();
 		String password = st.nextToken();
@@ -72,7 +71,7 @@ public class Decoder {
 	public static ArrayList<EntryClassifica> clientClassificaGlobale(String s){
 		st = new StringTokenizer(s,"#");
 		ArrayList<EntryClassifica> classifica = new ArrayList<>();
-		st.nextToken();		//rimuovo tag OK
+		//st.nextToken();		//rimuovo tag OK
 		st.nextToken();		//rimuovo tag CLASSIFICA
 		while(st.hasMoreTokens())
 			classifica.add(new EntryClassifica(st.nextToken(), Integer.parseInt(st.nextToken())));
@@ -82,7 +81,7 @@ public class Decoder {
 	public static ArrayList<EntryClassifica> clientClassificaGiornaliera(String s){
 		st = new StringTokenizer(s,"#");
 		ArrayList<EntryClassifica> classifica = new ArrayList<>();
-		st.nextToken();		//rimuovo tag OK
+		//st.nextToken();		//rimuovo tag OK
 		st.nextToken();		//rimuovo tag CLASSIFICA_G
 		while(st.hasMoreTokens())
 			classifica.add(new EntryClassifica(st.nextToken(), Integer.parseInt(st.nextToken())));
@@ -111,14 +110,14 @@ public class Decoder {
 
 	public static int serverGiocoTombola(String s){
 		st = new StringTokenizer(s,"#");
-		st.nextToken();		//rimuovo tag GIOCOTOMBOLA
+		//st.nextToken();		//rimuovo tag GIOCOTOMBOLA
 		return Integer.parseInt(st.nextToken());
 	}
 
 	public static SituazioneTombola clientAggTombola(String s){
 		st = new StringTokenizer(s,"#");
 		SituazioneTombola situazione = null;
-		st.nextToken();		//rimuovo tag OK
+		//st.nextToken();		//rimuovo tag OK
 		int nPartita = Integer.parseInt(st.nextToken());
 		String username = st.nextToken();
 		int nTabelle = Integer.parseInt(st.nextToken());
@@ -152,7 +151,7 @@ public class Decoder {
 	public static Vincita serverVincitaTombola(String s){
 		st = new StringTokenizer(s,"#");
 		Vincita vincita = null;
-		st.nextToken();	//rimuovo token VINTOTOMBOLA
+		//st.nextToken();	//rimuovo token VINTOTOMBOLA
 		int nPartita = Integer.parseInt(st.nextToken());
 		int tipoVittoria = Integer.parseInt(st.nextToken());
 		int nCartella = Integer.parseInt(st.nextToken());
@@ -170,7 +169,7 @@ public class Decoder {
 		ArrayList<Carta> bottini = new ArrayList<>();
 		ArrayList<Carta> banco = new ArrayList<>();
 
-		st.nextToken();		//rimuovo tag OK
+		//st.nextToken();		//rimuovo tag OK
 		int nPartita = Integer.parseInt(st.nextToken());
 		String username = st.nextToken();
 		boolean abilitato = Boolean.parseBoolean(st.nextToken());
@@ -195,7 +194,7 @@ public class Decoder {
 		ArrayList<Carta> bersagli = new ArrayList<>();
 		int bersaglio = 0;
 
-		st.nextToken();	//rimuovo token MOSSA
+		//st.nextToken();	//rimuovo token MOSSA
 
 		int nPartita = Integer.parseInt(st.nextToken());
 		int tipoMossa = Integer.parseInt(st.nextToken());
