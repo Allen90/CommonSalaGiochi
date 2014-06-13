@@ -21,4 +21,5 @@ public enum Figura {
 		valore = v;
 	}
 
+	
 }

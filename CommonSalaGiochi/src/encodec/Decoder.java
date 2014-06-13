@@ -3,8 +3,6 @@ package encodec;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import org.omg.CORBA.NVList;
-
 import rubamazzo.Carta;
 import rubamazzo.Mossa;
 import rubamazzo.MossaSocket;
@@ -19,7 +17,6 @@ import userModel.EntryClassifica;
 import userModel.InfoHome;
 import userModel.Login;
 import userModel.Registrazione;
-import userModel.Utente;
 
 public class Decoder {
 
@@ -121,6 +118,7 @@ public class Decoder {
 		st.nextToken();		//rimuovo tag OK
 		int nPartita = Integer.parseInt(st.nextToken());
 		String username = st.nextToken();
+		int creditiVinti = Integer.parseInt(st.nextToken());
 		int nTabelle = Integer.parseInt(st.nextToken());
 		boolean[] premiDisponibili = new boolean[5];
 
@@ -144,7 +142,7 @@ public class Decoder {
 		for(int i = 0; i < 5; i++)
 			premiDisponibili[i] = Boolean.parseBoolean(st.nextToken());
 
-		situazione = new SituazioneTombola(tabellone, username, cartelle, premiDisponibili, nPartita);
+		situazione = new SituazioneTombola(tabellone, username, cartelle, premiDisponibili, nPartita, creditiVinti);
 
 		return situazione;
 	}
