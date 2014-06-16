@@ -37,6 +37,7 @@ public class Encoder {
 		return output;
 	}
 	
+	
 	public static String serverLogin(Utente utente, int posizione, boolean valido){
 		String output;
 		if(valido){
@@ -69,7 +70,9 @@ public class Encoder {
 		for(EntryClassifica e : classifica){
 			output += i + "#" + e.getNome() + "#";
 			output += e.getCrediti() + "#";
+			i++;
 		}
+		System.out.println(output);
 		return output;
 	}
 	

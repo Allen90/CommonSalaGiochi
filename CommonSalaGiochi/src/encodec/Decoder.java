@@ -43,7 +43,8 @@ public class Decoder {
 			int crediti = Integer.parseInt(st.nextToken());
 			
 			String target = st.nextToken();
-			DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",Locale.ENGLISH);
+			//DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",Locale.ENGLISH);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
 			Date data = dateFormat.parse(target);
 			int posizione = Integer.parseInt(st.nextToken());
 			i = new InfoHome(nome,cognome,crediti,posizione,data);
@@ -77,22 +78,28 @@ public class Decoder {
 	}
 
 	public static ArrayList<EntryClassifica> clientClassificaGlobale(String s){
+		System.out.println(s);
 		st = new StringTokenizer(s,"#");
 		ArrayList<EntryClassifica> classifica = new ArrayList<>();
-		//st.nextToken();		//rimuovo tag OK
-		st.nextToken();		//rimuovo tag CLASSIFICA
-		while(st.hasMoreTokens())
+		st.nextToken();		//rimuovo tag OK
+		st.nextToken();	//rimuovo tag CLASSIFICA
+		while(st.hasMoreTokens()){
+			st.nextToken(); // scarto la posizione;
 			classifica.add(new EntryClassifica(st.nextToken(), Integer.parseInt(st.nextToken())));
+		}
 		return classifica;
 	}
 
 	public static ArrayList<EntryClassifica> clientClassificaGiornaliera(String s){
+		System.out.println(s);
 		st = new StringTokenizer(s,"#");
 		ArrayList<EntryClassifica> classifica = new ArrayList<>();
-		//st.nextToken();		//rimuovo tag OK
-		st.nextToken();		//rimuovo tag CLASSIFICA_G
-		while(st.hasMoreTokens())
+		st.nextToken();		//rimuovo tag OK
+		st.nextToken();	//rimuovo tag CLASSIFICA_G
+		while(st.hasMoreTokens()){
+			st.nextToken(); // scarto la posizione;
 			classifica.add(new EntryClassifica(st.nextToken(), Integer.parseInt(st.nextToken())));
+		}
 		return classifica;
 	}
 
