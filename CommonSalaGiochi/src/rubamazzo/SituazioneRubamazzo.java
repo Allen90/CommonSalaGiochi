@@ -12,6 +12,7 @@ public class SituazioneRubamazzo {
 	private ArrayList<Carta> banco = null;
 	private String username = null;
 	boolean abilitato = false;
+	String ultimaMossa = "";
 	
 	public SituazioneRubamazzo(TavoloRubamazzo tavolo, GiocatoreRubamazzo g, int n){
 		mano = new ArrayList<>();
@@ -32,7 +33,7 @@ public class SituazioneRubamazzo {
 		numeroPartita = n;
 	}
 
-	public SituazioneRubamazzo(String username, ArrayList<Carta> mano, ArrayList<Carta> bottini, ArrayList<Carta> banco, int n, boolean abilitato){
+	public SituazioneRubamazzo(String username, ArrayList<Carta> mano, ArrayList<Carta> bottini, ArrayList<Carta> banco, int n, boolean abilitato/*, String ultimaMossa*/){
 		this.mano = mano;
 		this.username = username;
 		this.banco = banco;
@@ -40,10 +41,11 @@ public class SituazioneRubamazzo {
 		this.mano = mano;
 		numeroPartita = n;
 		this.abilitato = abilitato;
+//		this.ultimaMossa = ultimaMossa;
 	}
 
 	
-	public void aggiornaSituazione(GiocatoreRubamazzo g,TavoloRubamazzo t){
+	public void aggiornaSituazione(GiocatoreRubamazzo g,TavoloRubamazzo t/*, Mossa ultimaMossa*/){
 		mano = g.getMano();
 		for(GiocatoreRubamazzo i: t.getGiocatori())
 			try {
@@ -52,6 +54,7 @@ public class SituazioneRubamazzo {
 				Carta c = null;
 				bottini.add(c);
 			}
+		
 	}
 	
 	public int getPartita(){
