@@ -1,6 +1,7 @@
 package rmiServer;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import eccezioni.EccezioneClassificaVuota;
@@ -14,15 +15,15 @@ import userModel.InfoHome;
 import userModel.Utente;
 
 public interface RmiTaskControl extends Remote{
-	public Rollata rolla();
-	public SituazioneTombola aggTombola();
-	public SituazioneRubamazzo aggRubaMazzo();
-	public ArrayList<EntryClassifica> aggClass() throws EccezioneClassificaVuota;
-	public ArrayList<EntryClassifica> aggClassGiorn() throws EccezioneClassificaVuota;
-	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga) throws EccezioneUtente;
-	public boolean mossaRubamazzo(Mossa m,int numPartita);
-	public void termina();
-	public boolean giocoTombola(int numCartelle) throws EccezioneUtente;
-	public boolean giocoRubamazzo() throws EccezioneUtente;
-	public InfoHome getInfoHome() throws EccezioneUtente;
+	public Rollata rolla() throws RemoteException;
+	public SituazioneTombola aggTombola()  throws RemoteException;
+	public SituazioneRubamazzo aggRubaMazzo()  throws RemoteException;
+	public ArrayList<EntryClassifica> aggClass() throws EccezioneClassificaVuota, RemoteException;  
+	public ArrayList<EntryClassifica> aggClassGiorn() throws EccezioneClassificaVuota, RemoteException;
+	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga) throws EccezioneUtente, RemoteException;
+	public boolean mossaRubamazzo(Mossa m,int numPartita) throws RemoteException;
+	public void termina() throws RemoteException;
+	public boolean giocoTombola(int numCartelle) throws EccezioneUtente, RemoteException;
+	public boolean giocoRubamazzo() throws EccezioneUtente, RemoteException;
+	public InfoHome getInfoHome() throws EccezioneUtente, RemoteException;
 }
