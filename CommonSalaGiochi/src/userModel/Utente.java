@@ -107,6 +107,11 @@ public class Utente {
 		this.ultimaVisita = ultimaVisita;
 	}
 
+	public java.sql.Date getUltimaVisitaSQL(){
+		long temp = ultimaVisita.getTime();
+		return new java.sql.Date(temp);
+	}
+	
 	public int getCrediti_giornalieri() {
 		return crediti_giornalieri;
 	}
