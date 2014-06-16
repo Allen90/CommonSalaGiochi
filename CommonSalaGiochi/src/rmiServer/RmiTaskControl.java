@@ -19,7 +19,7 @@ public interface RmiTaskControl extends Remote{
 	public SituazioneRubamazzo aggRubaMazzo();
 	public ArrayList<EntryClassifica> aggClass() throws EccezioneClassificaVuota;
 	public ArrayList<EntryClassifica> aggClassGiorn() throws EccezioneClassificaVuota;
-	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga);
+	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga) throws EccezioneUtente;
 	public boolean mossaRubamazzo(Mossa m,int numPartita);
 	public void termina();
 	public boolean giocoTombola(int numCartelle) throws EccezioneUtente;

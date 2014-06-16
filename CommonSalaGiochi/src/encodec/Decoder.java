@@ -1,8 +1,8 @@
 package encodec;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.StringTokenizer;
-
 
 import rubamazzo.Carta;
 import rubamazzo.Mossa;
@@ -38,6 +38,8 @@ public class Decoder {
 			String nome = st.nextToken();
 			String cognome = st.nextToken();
 			int crediti = Integer.parseInt(st.nextToken());
+			long temp = Date.parse(st.nextToken());
+			Date data = new Date(temp);
 			int posizione = Integer.parseInt(st.nextToken());
 			i = new InfoHome(nome,cognome,crediti,posizione);
 		}
@@ -48,8 +50,9 @@ public class Decoder {
 		System.out.println("stringa da decodec" + s);
 
 		String username = st.nextToken();
-		
+		System.out.println(username);
 		String password = st.nextToken();
+		System.out.println(password);
 
 		Login l = new Login(username, password);
 		return l;
