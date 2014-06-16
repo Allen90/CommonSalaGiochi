@@ -1,17 +1,21 @@
 package userModel;
 
+import java.util.Date;
+
 public class InfoHome {
 	
 	private String nome;
 	private String cognome;
 	private int crediti;
 	private int posizione;
+	private Date ultimoLogin;
 	
-	public InfoHome(String nome, String cognome, int crediti, int posizione){
+	public InfoHome(String nome, String cognome, int crediti, int posizione,Date ultimoLogin){
 		this.nome = nome;
 		this.cognome = cognome;
 		this.crediti = crediti;
 		this.posizione = posizione;
+		this.ultimoLogin = ultimoLogin;
 	}
 	
 	public int getPosizione(){

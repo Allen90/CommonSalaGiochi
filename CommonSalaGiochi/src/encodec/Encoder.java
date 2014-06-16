@@ -43,6 +43,7 @@ public class Encoder {
 			output = new String(ok);
 			output += utente.getNome()+"#"+utente.getCognome()+"#"
 					+utente.getCrediti()+"#"+utente.getUltimaVisita()+"#"+posizione;
+			System.out.println(output);
 		}else{
 			output = new String(ko);
 			output += "LOGINERR";

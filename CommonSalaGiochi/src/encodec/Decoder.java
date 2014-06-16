@@ -1,7 +1,11 @@
 package encodec;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import rubamazzo.Carta;
@@ -22,7 +26,6 @@ import userModel.Registrazione;
 public class Decoder {
 
 	private static StringTokenizer st;
-
 	//DECODE GENERALI
 
 	public static String getTipoAzione(String s){
@@ -31,17 +34,19 @@ public class Decoder {
 		return output;
 	}
 
-	public static InfoHome clientAccesso(String s){ //sia login che registrazione
+	public static InfoHome clientAccesso(String s) throws ParseException{ //sia login che registrazione
 		st = new StringTokenizer(s,"#");
 		InfoHome i = null;
 		if(st.nextToken().equals("OK")){
 			String nome = st.nextToken();
 			String cognome = st.nextToken();
 			int crediti = Integer.parseInt(st.nextToken());
-			long temp = Date.parse(st.nextToken());
-			Date data = new Date(temp);
+			
+			String target = st.nextToken();
+			DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",Locale.ENGLISH);
+			Date data = dateFormat.parse(target);
 			int posizione = Integer.parseInt(st.nextToken());
-			i = new InfoHome(nome,cognome,crediti,posizione);
+			i = new InfoHome(nome,cognome,crediti,posizione,data);
 		}
 		return i;
 	}
