@@ -3,7 +3,8 @@ package slot;
 import java.io.Serializable;
 
 public class Rollata implements Serializable{
-	
+
+	private static final long serialVersionUID = 1L;
 	private int premio;
 	private int crediti;
 	private int[] comb;
