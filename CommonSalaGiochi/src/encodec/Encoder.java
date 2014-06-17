@@ -91,12 +91,12 @@ public class Encoder {
 					output += r.getComb()[i] + "#";
 			}
 			
-			output += r.getVincita();
+			output += r.getVincita() + "#";
 			output += r.getPremio() + "#";
-			output += r.getCrediti();
+			output += r.getCrediti() + "#";
 		}else{
 			output = new String(ko) + "NOCREDITI#";
-			output += r.getCrediti();
+			output += r.getCrediti() + "#";
 		}
 		return output;
 	}

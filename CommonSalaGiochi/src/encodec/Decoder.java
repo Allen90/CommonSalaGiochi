@@ -111,8 +111,13 @@ public class Decoder {
 		int[] combinazione;
 		if(rollata.isValida()){
 			combinazione = new int[3];
-			for(int i = 0; i<3; i++)
-				combinazione[i] = Integer.parseInt(st.nextToken());
+			for(int i = 0; i<3; i++){
+				String temp = st.nextToken();
+				if(temp.equals("$"))
+					combinazione[i] = 5;
+				else
+					combinazione[i] = Integer.parseInt(temp);
+			}
 			rollata.setComb(combinazione);
 			rollata.setVincita(st.nextToken());
 			rollata.setPremio(Integer.parseInt(st.nextToken()));

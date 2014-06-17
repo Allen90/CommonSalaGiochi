@@ -34,7 +34,7 @@ public class Combinazione {
 		for(int i=0; i<2; i++)
 			if(valori[i] == valori[i+1]) flags[i] = true;
 		if(valori[0] == valori[2])
-			flags[2] = false;	
+			flags[2] = true;	
 		
 		
 		if(flags[0] == flags[1])
