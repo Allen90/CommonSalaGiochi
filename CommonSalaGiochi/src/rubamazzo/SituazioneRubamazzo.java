@@ -1,10 +1,11 @@
 package rubamazzo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import eccezioni.EccezioneRubamazzo;
 
-public class SituazioneRubamazzo {
+public class SituazioneRubamazzo implements Serializable{
 
 	private int numeroPartita = 0;
 	private ArrayList<Carta> mano = null;

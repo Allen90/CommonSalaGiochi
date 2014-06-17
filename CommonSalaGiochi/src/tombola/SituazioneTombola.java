@@ -1,8 +1,9 @@
 package tombola;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SituazioneTombola {
+public class SituazioneTombola implements Serializable{
 
 	private int numeroPartita = -1;
 	private ArrayList<Tabella> cartelle = null;

@@ -1,6 +1,8 @@
 package slot;
 
-public class Rollata {
+import java.io.Serializable;
+
+public class Rollata implements Serializable{
 	
 	private int premio;
 	private int crediti;

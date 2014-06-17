@@ -46,8 +46,10 @@ public class Utente {
 			
 			ultimaVisita = ultimoLogin;
 			
-			if(crediti > 0)
+			if(crediti > 0){
 				this.crediti = crediti;
+				crediti_giornalieri = 0;
+			}
 			else this.crediti = getCreditiIniziali();
 			
 		} else {

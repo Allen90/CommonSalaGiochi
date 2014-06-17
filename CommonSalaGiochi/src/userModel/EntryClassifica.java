@@ -1,6 +1,8 @@
 package userModel;
 
-public class EntryClassifica {
+import java.io.Serializable;
+
+public class EntryClassifica implements Serializable{
 	
 	private String nome = "";
 	private int crediti = 0;

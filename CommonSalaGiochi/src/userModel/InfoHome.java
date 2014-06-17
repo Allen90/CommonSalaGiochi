@@ -1,8 +1,9 @@
 package userModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class InfoHome {
+public class InfoHome implements Serializable{
 	
 	private String nome;
 	private String cognome;

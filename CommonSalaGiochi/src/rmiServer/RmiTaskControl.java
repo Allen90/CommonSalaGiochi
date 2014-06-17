@@ -15,7 +15,7 @@ import userModel.InfoHome;
 import userModel.Utente;
 
 public interface RmiTaskControl extends Remote{
-	public Rollata rolla() throws RemoteException;
+	public Rollata rolla() throws RemoteException, EccezioneUtente;
 	public SituazioneTombola aggTombola()  throws RemoteException;
 	public SituazioneRubamazzo aggRubaMazzo()  throws RemoteException;
 	public ArrayList<EntryClassifica> aggClass() throws EccezioneClassificaVuota, RemoteException;  
