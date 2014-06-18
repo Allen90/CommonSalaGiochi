@@ -44,7 +44,6 @@ public class Encoder {
 			output = new String(ok);
 			output += utente.getNome()+"#"+utente.getCognome()+"#"
 					+utente.getCrediti()+"#"+utente.getUltimaVisita()+"#"+posizione;
-			System.out.println(output);
 		}else{
 			output = new String(ko);
 			output += "LOGINERR";
@@ -72,7 +71,6 @@ public class Encoder {
 			output += e.getCrediti() + "#";
 			i++;
 		}
-		System.out.println(output);
 		return output;
 	}
 
@@ -175,12 +173,10 @@ public class Encoder {
 			output = new String(ko);
 			output += "NOCREDITI#" + crediti; 
 		}
-		System.out.println("qui in encoder prodotto"+output);
 		return output;
 	}
 
 	public static String serverAggiornaTombola(SituazioneTombola s){
-		System.out.println("sono in encoder server aggiorna tombola ho ricevuto"+s);
 		if(s != null){
 			String output = new String(ok);
 			output += s.getNumeroPartita() + "#";

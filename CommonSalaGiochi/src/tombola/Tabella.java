@@ -48,8 +48,8 @@ public class Tabella {
 		r = new Random();
 		for(int i=0; i<N_RIGHE; i++)
 			for(int j=0; j<N_COLONNE; j++){
-				tabella[i][j].setNumero(caselle.get(N_COLONNE*i + j).getNumero());
-				tabella[i][j].setEstratto(caselle.get(N_COLONNE*i + j).isEstratto());
+				Casella c = new Casella(caselle.get(N_COLONNE*i + j).getNumero(),caselle.get(N_COLONNE*i + j).isEstratto());
+				tabella[i][j] = c;
 			}
 		
 		this.vincente = vincente;
@@ -81,6 +81,7 @@ public class Tabella {
 		for(int i=0;i<N_RIGHE;i++){
 			for(int j=0;j<N_COLONNE;j++){
 				if(tabella[i][j].getNumero() != 0){
+					output += tabella[i][j].getNumero() +"#";
 					output += tabella[i][j].isEstratto() + "#";
 				}else{
 					output += "0#";

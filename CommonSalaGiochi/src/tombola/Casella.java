@@ -20,6 +20,11 @@ public class Casella {
 		this.estratto = Boolean.parseBoolean(estratto);  
 	}
 	
+	public Casella (int numero, boolean estratto){
+		this.numero = numero;
+		this.estratto = estratto;
+	}
+	
 	public int getNumero() {
 		return numero;
 	}

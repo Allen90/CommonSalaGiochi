@@ -29,7 +29,7 @@ public class Tabellone {
 		estrattore = new Random();
 		this.estratti = estratti;
 		this.ultimoEstratto = ultimoEstratto;
-		
+		this.numeri = new Casella[N_RIGHE][N_COLONNE];
 		int indice = 0;
 		for(int i=0;i<N_RIGHE;i++)
 			for(int j=0;j<N_COLONNE;j++){
@@ -55,11 +55,9 @@ public class Tabellone {
 	
 	private void riempi(){
 		int n = 0;
-		System.out.println("qui dentro riempi");
 		for(int i=0;i<N_RIGHE;i++)
 			for(int j=0;j<N_COLONNE;j++){
 				n = i*N_COLONNE+j+1;
-				System.out.println(n);
 				numeri[i][j] = new Casella(n);
 			}
 	}
@@ -69,11 +67,12 @@ public class Tabellone {
 		int decine = 0, unita = 0; 
 		do{
 			estratto = estrattore.nextInt(DIM_TAB)+1;
-			unita = estratto%N_COLONNE;
-			decine = (estratto - unita)/N_COLONNE;
-			System.out.println("estratto:" + estratto);
-			System.out.println("unita:" + unita);
-			System.out.println("decina:" + decine);
+			unita = estratto%10;
+			decine = (estratto - unita)/10;
+			if(unita == 0){
+				decine --;
+				unita = 10;
+			}
 		}while(numeri[decine][unita-1].isEstratto());
 		numeri[decine][unita-1].setEstratto(true);;
 		estratti ++;

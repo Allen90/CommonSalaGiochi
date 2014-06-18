@@ -56,12 +56,10 @@ public class Decoder {
 	}
 
 	public static Login serverLogin(String s){
-		System.out.println("stringa da decodec" + s);
+
 
 		String username = st.nextToken();
-		System.out.println(username);
 		String password = st.nextToken();
-		System.out.println(password);
 
 		Login l = new Login(username, password);
 		return l;
@@ -81,7 +79,6 @@ public class Decoder {
 	}
 
 	public static ArrayList<EntryClassifica> clientClassificaGlobale(String s){
-		System.out.println(s);
 		st = new StringTokenizer(s,"#");
 		ArrayList<EntryClassifica> classifica = new ArrayList<>();
 		st.nextToken();		//rimuovo tag OK
@@ -94,7 +91,6 @@ public class Decoder {
 	}
 
 	public static ArrayList<EntryClassifica> clientClassificaGiornaliera(String s){
-		System.out.println(s);
 		st = new StringTokenizer(s,"#");
 		ArrayList<EntryClassifica> classifica = new ArrayList<>();
 		st.nextToken();		//rimuovo tag OK
@@ -151,11 +147,22 @@ public class Decoder {
 			ArrayList<Casella> temp = new ArrayList<>();
 			int[] vincente = new int[Tabella.N_RIGHE];
 			for(int i = 0; i < nTabelle; i++){
-				for(int j = 0; j < Tabella.DIM_TAB; j++)
-					temp.add(new Casella(st.nextToken(), st.nextToken()));
+				for(int j = 0; j < Tabella.DIM_TAB; j++){
+					String s1 = st.nextToken();
+					if(Integer.parseInt(s1) == 0)
+						temp.add(new Casella(0));
+					else{
+						String s2 = st.nextToken();
+						temp.add(new Casella(s1, s2));
+					}
+//					System.out.println(s1);
+//					System.out.println(s2);
+
+				}
 				for(int j = 0; j < Tabella.N_RIGHE; j++)
 					vincente[i] = Integer.parseInt(st.nextToken());
-				cartelle.add(new Tabella(temp, vincente));
+				Tabella t = new Tabella(temp, vincente);
+				cartelle.add(t);
 				temp.clear();
 			}
 
@@ -265,6 +272,14 @@ public class Decoder {
 	}
 
 	public static boolean clientResponseGiocoRubamazzo(String s){
+		st = new StringTokenizer(s,"#");
+		String response = st.nextToken();
+		if(response.equals("OK"))
+			return true;
+		else return false;
+	}
+	
+	public static boolean clientResponseMossaRubamazzo(String s){
 		st = new StringTokenizer(s,"#");
 		String response = st.nextToken();
 		if(response.equals("OK"))
