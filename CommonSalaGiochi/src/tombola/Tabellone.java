@@ -11,15 +11,18 @@ public class Tabellone {
 	public static final int N_COLONNE = 10;
 	public static final int DIM_TAB = N_COLONNE * N_RIGHE;
 	
-	private Casella numeri[][];
+	private Casella[][] numeri;
 	private Random estrattore;
 	private int estratti = 0;
 	private int ultimoEstratto = 0;
 
 	public Tabellone(){
+		System.out.println("qui dentro construttore tabellone");
 		numeri = new Casella[N_RIGHE][N_COLONNE];
 		estrattore = new Random();
+		System.out.println("sto per riempire il tabellone");
 		riempi();
+		System.out.println("tabellone riempito");
 		estratti = 0;
 		ultimoEstratto = 0;
 
@@ -54,9 +57,15 @@ public class Tabellone {
 	}
 	
 	private void riempi(){
+		int n = 0;
+		System.out.println("qui dentro riempi");
 		for(int i=0;i<N_RIGHE;i++)
-			for(int j=0;j<N_COLONNE;j++)
-				numeri[i][j].setNumero(i*N_COLONNE+j+1);
+			for(int j=0;j<N_COLONNE;j++){
+				n = i*N_COLONNE+j+1;
+				System.out.println(n);
+				numeri[i][j] = new Casella(n);
+				System.out.println(numeri[i][j].getNumero());
+			}
 	}
 	
 	public int estrai(){
@@ -66,6 +75,9 @@ public class Tabellone {
 			estratto = estrattore.nextInt(DIM_TAB)+1;
 			unita = estratto%N_COLONNE;
 			decine = (estratto - unita)/N_COLONNE;
+			System.out.println("estratto:" + estratto);
+			System.out.println("unita:" + unita);
+			System.out.println("decina:" + decine);
 		}while(numeri[decine][unita-1].isEstratto());
 		numeri[decine][unita-1].setEstratto(true);;
 		estratti ++;

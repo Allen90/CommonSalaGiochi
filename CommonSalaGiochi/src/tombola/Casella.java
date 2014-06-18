@@ -9,6 +9,11 @@ public class Casella {
 		numero = -1;
 		estratto = false;
 	}
+	
+	public Casella(int numero){
+		this.numero = numero;
+		estratto = false;
+	}
 
 	public Casella (String numero, String estratto){
 		this.numero = Integer.parseInt(numero);

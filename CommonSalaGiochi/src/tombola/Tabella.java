@@ -26,12 +26,14 @@ public class Tabella {
 		for(int i=0; i<N_RIGHE; i++)
 			vincente[i] = 0;	
 
+		System.out.println("qui dentro construttore tabella");
 		Tabellone t = new Tabellone();
+		System.out.println("tabellone creato");
 		int estratto = 0;
 		
 		for(int decina=0; decina<N_COLONNE; decina++)
 			for(int j=0; j<N_RIGHE; j++){
-				tabella[j][decina].setNumero(t.estraiDaDecina(decina));
+				tabella[j][decina] = new Casella(t.estraiDaDecina(decina));
 			}		
 		for(int i=0;i<N_RIGHE;i++)
 			for(int j=0;j<N_VUOTI;j++){

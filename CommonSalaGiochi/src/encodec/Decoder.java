@@ -41,7 +41,7 @@ public class Decoder {
 			String nome = st.nextToken();
 			String cognome = st.nextToken();
 			int crediti = Integer.parseInt(st.nextToken());
-			
+
 			String target = st.nextToken();
 			//DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",Locale.ENGLISH);
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
@@ -245,6 +245,23 @@ public class Decoder {
 			return true;
 		else return false;
 
+	}
+
+	public static boolean clientResponseGiocoTombola(String s){
+		st = new StringTokenizer(s,"#");
+		String response = st.nextToken();
+		if(response.equals("OK"))
+			return true;
+		else return false;
+		
+	}
+	
+	public static boolean clientResponseGiocoRubamazzo(String s){
+		st = new StringTokenizer(s,"#");
+		String response = st.nextToken();
+		if(response.equals("OK"))
+			return true;
+		else return false;
 	}
 
 
