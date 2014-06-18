@@ -25,6 +25,9 @@ import userModel.Registrazione;
 
 public class Decoder {
 
+	int cacca;
+	
+	
 	private static StringTokenizer st;
 	//DECODE GENERALI
 
