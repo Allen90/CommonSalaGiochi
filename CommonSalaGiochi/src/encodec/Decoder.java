@@ -225,13 +225,15 @@ public class Decoder {
 
 		switch(tipoMossa){
 		case 0:
+			mossa = new Mossa(giocata);
+		case 1:
 			bersagli.add(new Carta(st.nextToken(),st.nextToken()));
 			mossa = new Mossa(giocata, bersagli.get(0));
-		case 1:
+		case 2:
 			while(st.hasMoreTokens())
 				bersagli.add(new Carta(st.nextToken(),st.nextToken()));
 			mossa = new Mossa(giocata, bersagli);
-		case 2:
+		case 3:
 			bersaglio = Integer.parseInt(st.nextToken());
 			mossa = new Mossa(giocata, bersaglio);
 		}

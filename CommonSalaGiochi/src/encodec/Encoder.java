@@ -148,12 +148,17 @@ public class Encoder {
 		output += m.getCartaGiocata() + "#";
 		switch(m.getTipoMossa()){
 		case 0:
-			output += m.getCartaBersaglio().toString();
+			break;
 		case 1:
+			output += m.getCartaBersaglio().toString();
+			break;
+		case 2:
 			for(Carta c : m.getCarteBersaglio())
 				output += c.toString();
-		case 2: 
+			break;
+		case 3: 
 			output += m.getGiocatoreBersaglio() + "#";
+			break;
 		}
 		return output;
 	}
