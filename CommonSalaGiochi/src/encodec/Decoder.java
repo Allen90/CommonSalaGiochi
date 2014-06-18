@@ -26,8 +26,8 @@ import userModel.Registrazione;
 public class Decoder {
 
 	int cacca;
-	
-	
+
+
 	private static StringTokenizer st;
 	//DECODE GENERALI
 
@@ -133,48 +133,51 @@ public class Decoder {
 
 	public static int serverGiocoTombola(String s){
 		st = new StringTokenizer(s,"#");
-		//st.nextToken();		//rimuovo tag GIOCOTOMBOLA
+		st.nextToken();		//rimuovo tag GIOCOTOMBOLA
 		return Integer.parseInt(st.nextToken());
 	}
 
 	public static SituazioneTombola clientAggTombola(String s){
 		st = new StringTokenizer(s,"#");
 		SituazioneTombola situazione = null;
-		//st.nextToken();		//rimuovo tag OK
-		int nPartita = Integer.parseInt(st.nextToken());
-		String username = st.nextToken();
-		int nTabelle = Integer.parseInt(st.nextToken());
-		boolean[] premiDisponibili = new boolean[5];
+		String response = st.nextToken();		//rimuovo tag OK
+		if(response.equals("OK")){
+			int nPartita = Integer.parseInt(st.nextToken());
+			String username = st.nextToken();
+			int nTabelle = Integer.parseInt(st.nextToken());
+			boolean[] premiDisponibili = new boolean[5];
 
-		ArrayList<Tabella> cartelle = new ArrayList<>();
-		ArrayList<Casella> temp = new ArrayList<>();
-		int[] vincente = new int[Tabella.N_RIGHE];
-		for(int i = 0; i < nTabelle; i++){
-			for(int j = 0; j < Tabella.DIM_TAB; j++)
+			ArrayList<Tabella> cartelle = new ArrayList<>();
+			ArrayList<Casella> temp = new ArrayList<>();
+			int[] vincente = new int[Tabella.N_RIGHE];
+			for(int i = 0; i < nTabelle; i++){
+				for(int j = 0; j < Tabella.DIM_TAB; j++)
+					temp.add(new Casella(st.nextToken(), st.nextToken()));
+				for(int j = 0; j < Tabella.N_RIGHE; j++)
+					vincente[i] = Integer.parseInt(st.nextToken());
+				cartelle.add(new Tabella(temp, vincente));
+				temp.clear();
+			}
+
+			Tabellone tabellone = null;
+			for(int i = 0; i < Tabellone.DIM_TAB; i++)
 				temp.add(new Casella(st.nextToken(), st.nextToken()));
-			for(int j = 0; j < Tabella.N_RIGHE; j++)
-				vincente[i] = Integer.parseInt(st.nextToken());
-			cartelle.add(new Tabella(temp, vincente));
-			temp.clear();
+			tabellone = new Tabellone(temp, Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+
+			for(int i = 0; i < 5; i++)
+				premiDisponibili[i] = Boolean.parseBoolean(st.nextToken());
+
+			situazione = new SituazioneTombola(tabellone, username, cartelle, premiDisponibili, nPartita);
+
+			return situazione;
 		}
-
-		Tabellone tabellone = null;
-		for(int i = 0; i < Tabellone.DIM_TAB; i++)
-			temp.add(new Casella(st.nextToken(), st.nextToken()));
-		tabellone = new Tabellone(temp, Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
-
-		for(int i = 0; i < 5; i++)
-			premiDisponibili[i] = Boolean.parseBoolean(st.nextToken());
-
-		situazione = new SituazioneTombola(tabellone, username, cartelle, premiDisponibili, nPartita);
-
-		return situazione;
+		else return null;
 	}
 
 	public static Vincita serverVincitaTombola(String s){
 		st = new StringTokenizer(s,"#");
 		Vincita vincita = null;
-		//st.nextToken();	//rimuovo token VINTOTOMBOLA
+		st.nextToken();	//rimuovo token VINTOTOMBOLA
 		int nPartita = Integer.parseInt(st.nextToken());
 		int tipoVittoria = Integer.parseInt(st.nextToken());
 		int nCartella = Integer.parseInt(st.nextToken());
@@ -258,9 +261,9 @@ public class Decoder {
 		if(response.equals("OK"))
 			return true;
 		else return false;
-		
+
 	}
-	
+
 	public static boolean clientResponseGiocoRubamazzo(String s){
 		st = new StringTokenizer(s,"#");
 		String response = st.nextToken();

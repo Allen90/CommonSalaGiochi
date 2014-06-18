@@ -26,7 +26,6 @@ public class Tabella {
 		for(int i=0; i<N_RIGHE; i++)
 			vincente[i] = 0;	
 
-		System.out.println("qui dentro construttore tabella");
 		Tabellone t = new Tabellone();
 		System.out.println("tabellone creato");
 		int estratto = 0;

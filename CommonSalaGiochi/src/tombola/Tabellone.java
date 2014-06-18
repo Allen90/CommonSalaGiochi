@@ -17,12 +17,9 @@ public class Tabellone {
 	private int ultimoEstratto = 0;
 
 	public Tabellone(){
-		System.out.println("qui dentro construttore tabellone");
 		numeri = new Casella[N_RIGHE][N_COLONNE];
 		estrattore = new Random();
-		System.out.println("sto per riempire il tabellone");
 		riempi();
-		System.out.println("tabellone riempito");
 		estratti = 0;
 		ultimoEstratto = 0;
 
@@ -64,7 +61,6 @@ public class Tabellone {
 				n = i*N_COLONNE+j+1;
 				System.out.println(n);
 				numeri[i][j] = new Casella(n);
-				System.out.println(numeri[i][j].getNumero());
 			}
 	}
 	

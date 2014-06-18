@@ -15,29 +15,29 @@ public class Encoder {
 
 	public static final String ok = "OK#";
 	public static final String ko = "KO#";
-	
-	public static final String clientTermina = "TERMINA";
-	public static final String clientGiocoRumbamazzo = "GIOCORUBAMAZZO";
-	public static final String clientRolla = "ROLLA";
-	
-	public static final String clientAggiornaRubamazzo = "AGGRUBAMAZZO";
-	public static final String clientAggiornaTombola = "AGGTOMBOLA";
-	public static final String clientAggiornaClassifica = "AGGCLASS";
-	public static final String clientAggiornaCrediti = "AGGCREDITI";
-	
+
+	public static final String clientTermina = "TERMINA#";
+	public static final String clientGiocoRumbamazzo = "GIOCORUBAMAZZO#";
+	public static final String clientRolla = "ROLLA#";
+
+	public static final String clientAggiornaRubamazzo = "AGGRUBAMAZZO#";
+	public static final String clientAggiornaTombola = "AGGTOMBOLA#";
+	public static final String clientAggiornaClassifica = "AGGCLASS#";
+	public static final String clientAggiornaCrediti = "AGGCREDITI#";
+
 	public static String clientLogin(String username, String password){
 		String output = new String();
 		output += "LOGIN#" + username + "#" + password;
 		return output;
 	}
-	
+
 	public static String clientRegistra(String username, String password, String confPassword, String nome, String cognome){
 		String output = new String();
 		output += "REGISTRA#" + username + "#" + password + "#" + confPassword + "#" + nome + "#" + cognome;
 		return output;
 	}
-	
-	
+
+
 	public static String serverLogin(Utente utente, int posizione, boolean valido){
 		String output;
 		if(valido){
@@ -51,7 +51,7 @@ public class Encoder {
 		}
 		return output;
 	}
-	
+
 	public static String serverRegistra(Utente utente, int posizione, boolean valido){
 		String output;
 		if(valido){
@@ -62,7 +62,7 @@ public class Encoder {
 		}
 		return output;
 	}
-	
+
 	public static String serverClassifica(ArrayList<EntryClassifica> classifica){
 		String output = new String(ok);
 		int i = 1;
@@ -75,10 +75,10 @@ public class Encoder {
 		System.out.println(output);
 		return output;
 	}
-	
-	
+
+
 	//SLOT MACHINE
-	
+
 	public static String serverRolla(Rollata r){
 		String output;
 		if(r.isValida()){
@@ -90,7 +90,7 @@ public class Encoder {
 				else 
 					output += r.getComb()[i] + "#";
 			}
-			
+
 			output += r.getVincita() + "#";
 			output += r.getPremio() + "#";
 			output += r.getCrediti() + "#";
@@ -100,9 +100,9 @@ public class Encoder {
 		}
 		return output;
 	}
-	
+
 	//RUBAMAZZO
-	
+
 	public static String serverGiocoRubamazzo(boolean valido, int crediti){
 		String output;
 		if(valido){
@@ -114,7 +114,7 @@ public class Encoder {
 		}
 		return output;
 	}
-	
+
 	public static String serverMossaRubamazzo(boolean valida){
 		String output;
 		if(valida){
@@ -126,7 +126,7 @@ public class Encoder {
 		}
 		return output;
 	}
-	
+
 	public static String serverAggiornaRubamazzo(SituazioneRubamazzo s){
 		String output = new String(ok);
 		output += s.getPartita() + "#";
@@ -140,7 +140,7 @@ public class Encoder {
 			output +=c.toString() + "#";
 		return output;
 	}
-	
+
 	public static String clientMossaRubamazzo(Mossa m, int nPartita){
 		String output = new String("MOSSA#");
 		output += nPartita + "#";
@@ -162,10 +162,10 @@ public class Encoder {
 		}
 		return output;
 	}
-	
-	
+
+
 	//TOMBOLA
-	
+
 	public static String serverGiocoTombola(boolean valido, int crediti){
 		String output;
 		if(valido){
@@ -175,40 +175,46 @@ public class Encoder {
 			output = new String(ko);
 			output += "NOCREDITI#" + crediti; 
 		}
+		System.out.println("qui in encoder prodotto"+output);
 		return output;
 	}
-	
+
 	public static String serverAggiornaTombola(SituazioneTombola s){
-		String output = new String(ok);
-		output += s.getNumeroPartita() + "#";
-		output += s.getUsername() + "#";
-		output += s.getTabelle().size() + "#";
-		for(Tabella t: s.getTabelle()){
-			output += t.toString();
-			for(int i = 0; i < t.getVincente().length; i++)
-				output += t.getVincente()[i] + "#";
+		System.out.println("sono in encoder server aggiorna tombola ho ricevuto"+s);
+		if(s != null){
+			String output = new String(ok);
+			output += s.getNumeroPartita() + "#";
+			output += s.getUsername() + "#";
+			output += s.getTabelle().size() + "#";
+			for(Tabella t: s.getTabelle()){
+				output += t.toString();
+				for(int i = 0; i < t.getVincente().length; i++)
+					output += t.getVincente()[i] + "#";
+			}
+			output += s.getTabellone().toString();
+			for(int i = 0; i<s.getPremiDisponibili().length; i++)
+				output += s.getPremiDisponibili()[i] + "#";;
+				return output;
 		}
-		output += s.getTabellone().toString();
-		for(int i = 0; i<s.getPremiDisponibili().length; i++)
-			output += s.getPremiDisponibili()[i] + "#";;
-		return output;
+		
+		return ko;
 	}
-	
+
 	public static String clientVintoTombola(int nPartita, int tipoVittoria, int cartella, int riga){
 		String output = new String(ok);
 		output += "VINTOTOMBOLA#" + nPartita + "#" + tipoVittoria + "#" + cartella + "#" + riga;
 		return output;
 	}
-	
+
 	public static String clientGiocoTombola(int nCartelle){
 		return "GIOCOTOMBOLA#" + nCartelle;
 	}
-	
+
 	public static String serverResponseVintoTombola(Boolean valido){
 		if(valido)
 			return ok;
 		else return ko;
 	}
-	
-	
+
+
 }
