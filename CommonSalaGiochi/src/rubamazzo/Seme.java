@@ -2,10 +2,10 @@ package rubamazzo;
 
 public enum Seme {
 	
-	SPADE("SPA"), 
-	COPPE("COP"), 
-	BASTONI("BAS"), 
-	DENARI("DEN");
+	SPA("SPA"), 
+	COP("COP"), 
+	BAS("BAS"), 
+	DEN("DEN");
 
 	final String nome;
 

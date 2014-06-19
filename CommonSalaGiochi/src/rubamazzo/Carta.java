@@ -1,12 +1,15 @@
 package rubamazzo;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 public class Carta{
 	final Seme seme;
 	final Figura figura;
 
+	private StringTokenizer st;	
+	
 	public Carta(Figura f, Seme s) {
 		figura = f;
 		seme = s;
@@ -17,9 +20,16 @@ public class Carta{
 		this.seme = Seme.valueOf(seme);
 	}
 
+	public Carta (String s){
+		st = new StringTokenizer(s, "#");
+		this.figura = Figura.valueOf(st.nextToken());
+		this.seme = Seme.valueOf(st.nextToken());
+		
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("%s#%s#", seme.nome, figura.nome);
+		return String.format("%s#%s#", figura.nome,seme.nome);
 	}
 	
 	public boolean confronta(Carta c){
