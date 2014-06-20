@@ -160,7 +160,7 @@ public class Decoder {
 
 				}
 				for(int j = 0; j < Tabella.N_RIGHE; j++)
-					vincente[i] = Integer.parseInt(st.nextToken());
+					vincente[j] = Integer.parseInt(st.nextToken());
 				Tabella t = new Tabella(temp, vincente);
 				cartelle.add(t);
 				temp.clear();
