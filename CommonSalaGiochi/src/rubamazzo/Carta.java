@@ -10,6 +10,11 @@ public class Carta{
 
 	private StringTokenizer st;	
 	
+	public Carta() {
+		figura = Figura.COPERTA;
+		seme = Seme.COPERTA;
+	}
+	
 	public Carta(Figura f, Seme s) {
 		figura = f;
 		seme = s;

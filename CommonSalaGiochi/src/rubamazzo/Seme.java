@@ -2,6 +2,7 @@ package rubamazzo;
 
 public enum Seme {
 	
+	COPERTA("VERT"),
 	SPA("SPA"), 
 	COP("COP"), 
 	BAS("BAS"), 

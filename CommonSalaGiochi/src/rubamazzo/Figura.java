@@ -1,7 +1,8 @@
 package rubamazzo;
 
 public enum Figura {
-
+	
+	COPERTA(0, "RETRO"),
 	ASSO(1, "ASSO"),
 	DUE(2, "2"), 
 	TRE(3, "3"), 

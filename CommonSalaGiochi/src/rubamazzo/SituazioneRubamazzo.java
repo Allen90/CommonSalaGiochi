@@ -12,34 +12,32 @@ public class SituazioneRubamazzo implements Serializable{
 	private ArrayList<Carta> mano = null;
 	private ArrayList<Carta> bottini = null;
 	private ArrayList<Carta> banco = null;
-	private int mioBottino = -1;
+	private int mioIndice = -1;
 	private String username = null;
 	boolean abilitato = false;
 	String ultimaMossa = "";
 
 	public SituazioneRubamazzo(TavoloRubamazzo tavolo, GiocatoreRubamazzo g, int n){
+		username = new String(g.getUtente().getUsername());
 		mano = new ArrayList<>();
 		mano.addAll(g.getMano());
 		username = new String(g.getUtente().getUsername());
+		bottini = new ArrayList<>();
+		banco = new ArrayList<>();
 		for(GiocatoreRubamazzo i: tavolo.getGiocatori())
 			try {
 				bottini.add(i.getPrimaBottino());
 			} catch (EccezioneRubamazzo e) {
-				Carta c = null;
-				bottini.add(c);
+				bottini.add(new Carta());
 			}
 		try {
 			banco = tavolo.getBanco();
 		} catch (EccezioneRubamazzo e) {
 			banco = null;
 		}
-		try {
-			for(int i = 0; i < bottini.size(); i++)
-				if(bottini.get(i).confrontaCarta(g.getPrimaBottino()))
-					mioBottino = i;
-		} catch (EccezioneRubamazzo e) {
-			mioBottino = -1;
-		}
+		for(int i = 0; i < tavolo.getGiocatori().size(); i++)
+			if(tavolo.getGiocatori().get(i).getUtente().getUsername().equals(g.getUtente().getUsername()))
+				mioIndice = i;
 		numeroPartita = n;
 	}
 
@@ -100,8 +98,8 @@ public class SituazioneRubamazzo implements Serializable{
 	}
 
 	public Carta getMioBottino(){
-		if(mioBottino != -1)
-			return bottini.get(mioBottino);
+		if(mioIndice != -1)
+			return bottini.get(mioIndice);
 		else
 			return null;
 	}

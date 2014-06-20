@@ -12,7 +12,8 @@ class Mazzo {
 		carte = new LinkedList<>();
 		for (Seme s: Seme.values())
 			for (Figura f: Figura.values())
-				carte.add(new Carta(f, s));
+				if(!f.nome.equals("RETRO") && !s.nome.equals("VERT"))
+					carte.add(new Carta(f, s));
 	}
 	
 	static Mazzo nuovo() {

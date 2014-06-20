@@ -34,7 +34,6 @@ public class TestTombola {
 //				t.stampa();
 //				String line = s.nextLine();
 //			}
-
 		tab.stampa();
 	}
 }

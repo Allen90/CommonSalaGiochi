@@ -26,12 +26,16 @@ public class GiocatoreRubamazzo {
 	}
 
 	public Carta getPrimaBottino() throws EccezioneRubamazzo{
-		if(bottino.get(0) == null) throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
-		else return bottino.get(0);
+		try{
+			return bottino.get(0);
+		}catch(IndexOutOfBoundsException e){
+			throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
+		}
 	}
 	
 	public ArrayList<Carta> getBottino() throws EccezioneRubamazzo{
-		if(bottino.get(0) == null) throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
+		if(bottino.size() == 0)
+			throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
 		else return bottino;
 	}
 	
