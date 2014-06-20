@@ -69,11 +69,21 @@ public class Tabella {
 		for(int i=0;i<N_RIGHE;i++){
 			for(int j=0;j<N_COLONNE;j++){
 				if(tabella[i][j].getNumero() != 0)
-					System.out.print(tabella[i][j]+"\t");
+					System.out.print(tabella[i][j].getNumero()+"\t");
 				else System.out.print(" \t");
 			}
 			System.out.println();
 		}
+		for(int i=0;i<N_RIGHE;i++){
+			for(int j=0;j<N_COLONNE;j++){
+				System.out.print(tabella[i][j].isEstratto()+"\t");
+			}
+			System.out.println();
+		}
+		for(int i=0;i<N_RIGHE;i++){
+			System.out.print(" "+vincente[i]+" ");
+		}
+		System.out.println();
 	}
 	
 	public String toString(){

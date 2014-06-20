@@ -197,7 +197,7 @@ public class Encoder {
 	}
 
 	public static String clientVintoTombola(int nPartita, int tipoVittoria, int cartella, int riga){
-		String output = new String(ok);
+		String output = new String();
 		output += "VINTOTOMBOLA#" + nPartita + "#" + tipoVittoria + "#" + cartella + "#" + riga;
 		return output;
 	}
