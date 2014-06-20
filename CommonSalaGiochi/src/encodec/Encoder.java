@@ -24,6 +24,8 @@ public class Encoder {
 	public static final String clientAggiornaTombola = "AGGTOMBOLA#";
 	public static final String clientAggiornaClassifica = "AGGCLASS#";
 	public static final String clientAggiornaCrediti = "AGGCREDITI#";
+	
+	public static final String clientLogout = "LOGOUT#";
 
 	public static String clientLogin(String username, String password){
 		String output = new String();

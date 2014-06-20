@@ -22,8 +22,8 @@ public interface RmiTaskControl extends Remote{
 	public ArrayList<EntryClassifica> aggClassGiorn() throws EccezioneClassificaVuota, RemoteException;
 	public boolean vintoTombola(int numPartita,int tipoVittoria,int indiceCartella, int indiceRiga) throws EccezioneUtente, RemoteException;
 	public boolean mossaRubamazzo(Mossa m,int numPartita) throws RemoteException;
-	public void termina() throws RemoteException;
 	public boolean giocoTombola(int numCartelle) throws EccezioneUtente, RemoteException;
 	public boolean giocoRubamazzo() throws EccezioneUtente, RemoteException;
 	public InfoHome getInfoHome() throws EccezioneUtente, RemoteException;
+	public boolean logout() throws EccezioneUtente, RemoteException;
 }

@@ -295,5 +295,13 @@ public class Decoder {
 			return true;
 		else return false;
 	}
+	
+	public static boolean clientResponseLogout(String s){
+		st = new StringTokenizer(s,"#");
+		String response = st.nextToken();
+		if(response.equals("OK"))
+			return true;
+		else return false;
+	}
 
 }
