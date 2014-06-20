@@ -196,28 +196,37 @@ public class Decoder {
 	//RUBAMAZZO
 
 	public static SituazioneRubamazzo clientAggRubamazzo(String s){
+		
+		System.out.println(s);
+		
 		st = new StringTokenizer(s,"#");
 		SituazioneRubamazzo situazione = null;
 		ArrayList<Carta> mano = new ArrayList<>();
 		ArrayList<Carta> bottini = new ArrayList<>();
 		ArrayList<Carta> banco = new ArrayList<>();
 
-		//st.nextToken();		//rimuovo tag OK
-		int nPartita = Integer.parseInt(st.nextToken());
-		String username = st.nextToken();
-		boolean abilitato = Boolean.parseBoolean(st.nextToken());
+		String response = st.nextToken();		
+		if(response.equals("OK")){
+			
+			int nPartita = Integer.parseInt(st.nextToken());
+			String username = st.nextToken();
+			boolean abilitato = Boolean.parseBoolean(st.nextToken());
 
-		for(int i = 0; i < 3; i++)
-			mano.add(new Carta(st.nextToken(), st.nextToken()));
+			int dimMano = Integer.parseInt(st.nextToken());
+			for(int i = 0; i < dimMano; i++)
+				mano.add(new Carta(st.nextToken(), st.nextToken()));
 
-		for(int i = 0; i < 3; i++)
-			bottini.add(new Carta(st.nextToken(), st.nextToken()));
+			int nGiocatori = Integer.parseInt(st.nextToken());
+			for(int i = 0; i < nGiocatori; i++)
+				bottini.add(new Carta(st.nextToken(), st.nextToken()));
 
-		while(st.hasMoreTokens())
-			banco.add(new Carta(st.nextToken(), st.nextToken()));
+			while(st.hasMoreTokens())
+				banco.add(new Carta(st.nextToken(), st.nextToken()));
 
-		situazione = new SituazioneRubamazzo(username, mano, bottini, banco, nPartita, abilitato);
-		return situazione;
+			situazione = new SituazioneRubamazzo(username, mano, bottini, banco, nPartita, abilitato);
+			return situazione;
+		}
+		else return null;
 	}
 
 	public static MossaSocket serverMossarubamazzo(String s){
@@ -286,6 +295,5 @@ public class Decoder {
 			return true;
 		else return false;
 	}
-
 
 }

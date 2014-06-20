@@ -101,7 +101,9 @@ public class Encoder {
 
 	//RUBAMAZZO
 
-	public static String serverGiocoRubamazzo(boolean valido, int crediti){
+
+
+public static String serverGiocoRubamazzo(boolean valido, int crediti){
 		String output;
 		if(valido){
 			output = new String(ok);
@@ -126,17 +128,26 @@ public class Encoder {
 	}
 
 	public static String serverAggiornaRubamazzo(SituazioneRubamazzo s){
-		String output = new String(ok);
-		output += s.getPartita() + "#";
-		output += s.getUsername() + "#";
-		output += s.getAbilitato() + "#";
-		for(Carta c : s.getMano())
-			output += c.toString() + "#";
-		for(Carta c : s.getBottini())
-			output += c.toString() + "#";
-		for(Carta c : s.getBanco())
-			output +=c.toString() + "#";
-		return output;
+		if(s != null){
+			String output = new String(ok);
+			
+			output += s.getPartita() + "#";
+			output += s.getUsername() + "#";
+			output += s.getAbilitato() + "#";
+			
+			output += s.getMano().size() + "#";
+			for(Carta c : s.getMano())
+				output += c.toString();
+			
+			output += s.getBottini().size() + "#"; 
+			for(Carta c : s.getBottini())
+				output += c.toString();
+			
+			for(Carta c : s.getBanco())
+				output +=c.toString();
+			return output;
+		}
+		return ko;
 	}
 
 	public static String clientMossaRubamazzo(Mossa m, int nPartita){
