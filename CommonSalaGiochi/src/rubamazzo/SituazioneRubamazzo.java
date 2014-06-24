@@ -28,7 +28,6 @@ public class SituazioneRubamazzo implements Serializable{
 			try {
 				bottini.add(i.getPrimaBottino());
 			} catch (EccezioneRubamazzo e) {
-				bottini.add(new Carta());
 			}
 		try {
 			banco = tavolo.getBanco();
@@ -41,7 +40,7 @@ public class SituazioneRubamazzo implements Serializable{
 		numeroPartita = n;
 	}
 
-	public SituazioneRubamazzo(String username, ArrayList<Carta> mano, ArrayList<Carta> bottini, ArrayList<Carta> banco, int n, boolean abilitato/*, String ultimaMossa*/){
+	public SituazioneRubamazzo(String username, int mioIndice, ArrayList<Carta> mano, ArrayList<Carta> bottini, ArrayList<Carta> banco, int n, boolean abilitato/*, String ultimaMossa*/){
 		this.mano = mano;
 		this.username = username;
 		this.banco = banco;
@@ -49,18 +48,19 @@ public class SituazioneRubamazzo implements Serializable{
 		this.mano = mano;
 		numeroPartita = n;
 		this.abilitato = abilitato;
+		this.mioIndice = mioIndice;
 		//		this.ultimaMossa = ultimaMossa;
 	}
 
 
 	public void aggiornaSituazione(GiocatoreRubamazzo g,TavoloRubamazzo t/*, Mossa ultimaMossa*/){
-		mano = g.getMano();
+		for(int i = 0; i< t.getGiocatori().size(); i++)
+			if(t.getGiocatori().get(i).getUtente().getUsername().equals(g.getUtente().getUsername()))
+				mano = t.getGiocatori().get(i).getMano();
 		for(GiocatoreRubamazzo i: t.getGiocatori())
 			try {
 				bottini.add(i.getPrimaBottino());
 			} catch (EccezioneRubamazzo e) {
-				Carta c = null;
-				bottini.add(c);
 			}
 
 	}
@@ -88,17 +88,21 @@ public class SituazioneRubamazzo implements Serializable{
 	public ArrayList<Carta> getBottini(){
 		return bottini;
 	}
+
+	public int getMioIndice() {
+		return mioIndice;
+	}
 	
 	public ArrayList<Carta> getBottiniAltrui(){
-		ArrayList<Carta> temp = new ArrayList<>();
-		temp.addAll(bottini);
-		if(getMioBottino() != null)
+		ArrayList<Carta> temp = new ArrayList<>(bottini);
+		if(getMioBottino() != null && getMioBottino() != null)
 			temp.remove(getMioBottino());
+		
 		return temp;
 	}
 
 	public Carta getMioBottino(){
-		if(mioIndice != -1)
+		if(mioIndice != -1 && bottini.size() > 0)
 			return bottini.get(mioIndice);
 		else
 			return null;

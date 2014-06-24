@@ -196,9 +196,7 @@ public class Decoder {
 	//RUBAMAZZO
 
 	public static SituazioneRubamazzo clientAggRubamazzo(String s){
-		
-		System.out.println(s);
-		
+				
 		st = new StringTokenizer(s,"#");
 		SituazioneRubamazzo situazione = null;
 		ArrayList<Carta> mano = new ArrayList<>();
@@ -210,6 +208,7 @@ public class Decoder {
 			
 			int nPartita = Integer.parseInt(st.nextToken());
 			String username = st.nextToken();
+			int mioIndice = Integer.parseInt(st.nextToken());
 			boolean abilitato = Boolean.parseBoolean(st.nextToken());
 
 			int dimMano = Integer.parseInt(st.nextToken());
@@ -223,7 +222,7 @@ public class Decoder {
 			while(st.hasMoreTokens())
 				banco.add(new Carta(st.nextToken(), st.nextToken()));
 
-			situazione = new SituazioneRubamazzo(username, mano, bottini, banco, nPartita, abilitato);
+			situazione = new SituazioneRubamazzo(username, mioIndice, mano, bottini, banco, nPartita, abilitato);
 			return situazione;
 		}
 		else return null;
@@ -236,7 +235,7 @@ public class Decoder {
 		ArrayList<Carta> bersagli = new ArrayList<>();
 		int bersaglio = 0;
 
-		//st.nextToken();	//rimuovo token MOSSA
+		st.nextToken();	//rimuovo token MOSSA
 
 		int nPartita = Integer.parseInt(st.nextToken());
 		int tipoMossa = Integer.parseInt(st.nextToken());
@@ -245,16 +244,20 @@ public class Decoder {
 		switch(tipoMossa){
 		case 0:
 			mossa = new Mossa(giocata);
+			break;
 		case 1:
 			bersagli.add(new Carta(st.nextToken(),st.nextToken()));
 			mossa = new Mossa(giocata, bersagli.get(0));
+			break;
 		case 2:
 			while(st.hasMoreTokens())
 				bersagli.add(new Carta(st.nextToken(),st.nextToken()));
 			mossa = new Mossa(giocata, bersagli);
+			break;
 		case 3:
 			bersaglio = Integer.parseInt(st.nextToken());
 			mossa = new Mossa(giocata, bersaglio);
+			break;
 		}
 
 		mossaSocket = new MossaSocket(mossa, nPartita);

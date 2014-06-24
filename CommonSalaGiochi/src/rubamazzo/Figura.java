@@ -21,5 +21,18 @@ public enum Figura {
 		nome = n;
 		valore = v;
 	}
+	
+	private String getNome() {
+		return nome;
+	}
+	
+	public static Figura getFiguraDaString(String fig) throws IllegalArgumentException {
+		for(Figura f:Figura.values()) {
+			if(f.getNome().equals(fig)) {
+				return f;
+			}
+		}
+		throw new IllegalArgumentException("Valore non presente nell'Enum");
+	}
 
 }

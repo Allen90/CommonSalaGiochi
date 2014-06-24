@@ -135,6 +135,7 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 			
 			output += s.getPartita() + "#";
 			output += s.getUsername() + "#";
+			output += s.getMioIndice() + "#";
 			output += s.getAbilitato() + "#";
 			
 			output += s.getMano().size() + "#";
@@ -142,8 +143,8 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 				output += c.toString();
 			
 			output += s.getBottini().size() + "#"; 
-			for(Carta c : s.getBottini())
-				output += c.toString();
+			for(int i = 0; i<s.getBottini().size(); i++)
+				output += s.getBottini().get(i).toString();
 			
 			for(Carta c : s.getBanco())
 				output +=c.toString();

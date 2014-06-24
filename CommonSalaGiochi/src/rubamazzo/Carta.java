@@ -21,14 +21,14 @@ public class Carta{
 	}
 	
 	public Carta(String figura, String seme){
-		this.figura = Figura.valueOf(figura);
-		this.seme = Seme.valueOf(seme);
+		this.figura = Figura.getFiguraDaString(figura);
+		this.seme = Seme.getSemeDaString(seme);
 	}
 
 	public Carta (String s){
 		st = new StringTokenizer(s, "#");
-		this.figura = Figura.valueOf(st.nextToken());
-		this.seme = Seme.valueOf(st.nextToken());
+		this.figura = Figura.getFiguraDaString(st.nextToken());
+		this.seme = Seme.getSemeDaString(st.nextToken());
 		
 	}
 	

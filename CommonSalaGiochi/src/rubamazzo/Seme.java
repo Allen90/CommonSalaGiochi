@@ -14,4 +14,16 @@ public enum Seme {
 		nome = n;
 	}
 	
+	private String getNome() {
+		return nome;
+	}
+	
+	public static Seme getSemeDaString(String seme) throws IllegalArgumentException {
+		for(Seme s:Seme.values()) {
+			if(s.getNome().equals(seme)) {
+				return s;
+			}
+		}
+		throw new IllegalArgumentException("Valore non presente nell'Enum");
+	}
 }
