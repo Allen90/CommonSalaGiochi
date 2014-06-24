@@ -130,6 +130,7 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 	}
 
 	public static String serverAggiornaRubamazzo(SituazioneRubamazzo s){
+		
 		if(s != null){
 			String output = new String(ok);
 			
@@ -139,8 +140,9 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 			output += s.getAbilitato() + "#";
 			
 			output += s.getMano().size() + "#";
-			for(Carta c : s.getMano())
+			for(Carta c : s.getMano()){
 				output += c.toString();
+			}
 			
 			output += s.getBottini().size() + "#"; 
 			for(int i = 0; i<s.getBottini().size(); i++)

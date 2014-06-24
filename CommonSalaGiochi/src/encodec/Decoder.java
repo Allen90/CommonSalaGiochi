@@ -195,8 +195,7 @@ public class Decoder {
 
 	//RUBAMAZZO
 
-	public static SituazioneRubamazzo clientAggRubamazzo(String s){
-				
+	public synchronized static SituazioneRubamazzo clientAggRubamazzo(String s){
 		st = new StringTokenizer(s,"#");
 		SituazioneRubamazzo situazione = null;
 		ArrayList<Carta> mano = new ArrayList<>();
@@ -210,11 +209,12 @@ public class Decoder {
 			String username = st.nextToken();
 			int mioIndice = Integer.parseInt(st.nextToken());
 			boolean abilitato = Boolean.parseBoolean(st.nextToken());
-
+			
 			int dimMano = Integer.parseInt(st.nextToken());
-			for(int i = 0; i < dimMano; i++)
+			for(int i = 0; i < dimMano; i++){
 				mano.add(new Carta(st.nextToken(), st.nextToken()));
-
+			}
+			
 			int nGiocatori = Integer.parseInt(st.nextToken());
 			for(int i = 0; i < nGiocatori; i++)
 				bottini.add(new Carta(st.nextToken(), st.nextToken()));

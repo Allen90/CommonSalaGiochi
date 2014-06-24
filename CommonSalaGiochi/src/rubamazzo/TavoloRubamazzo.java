@@ -88,7 +88,6 @@ public class TavoloRubamazzo {
 
 	public void daGiocatoreABanco(Carta giocata, String username) throws EccezioneRubamazzo{
 		int i;
-		System.out.println("CONTROLLO MOSSA" + controllaMossa(giocata));
 		if(!controllaMossa(giocata)){
 			
 			throw new EccezioneRubamazzo("Mossa non legale!");

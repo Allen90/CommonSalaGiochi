@@ -59,6 +59,7 @@ public class SituazioneRubamazzo implements Serializable{
 				mano = t.getGiocatori().get(i).getMano();
 		for(GiocatoreRubamazzo i: t.getGiocatori())
 			try {
+				bottini.removeAll(bottini);
 				bottini.add(i.getPrimaBottino());
 			} catch (EccezioneRubamazzo e) {
 			}
