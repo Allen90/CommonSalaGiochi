@@ -225,6 +225,13 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 			return ok;
 		else return ko;
 	}
+	
+	public static String severLogout(boolean continua){
+		if(!continua){
+			return ok;
+		}
+		else return ko;
+	}
 
 
 }
