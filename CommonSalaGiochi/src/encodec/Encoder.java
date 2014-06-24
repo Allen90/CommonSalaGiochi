@@ -196,11 +196,18 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 			output += s.getNumeroPartita() + "#";
 			output += s.getUsername() + "#";
 			output += s.getTabelle().size() + "#";
-			for(Tabella t: s.getTabelle()){
-				output += t.toString();
-				for(int i = 0; i < t.getVincente().length; i++)
-					output += t.getVincente()[i] + "#";
+//			for(Tabella t: s.getTabelle()){
+//				output += t.toString();
+//				for(int i = 0; i < t.getVincente().length; i++)
+//					output += t.getVincente()[i] + "#";
+//			}
+			
+			for(int i = 0;i < s.getTabelle().size();i++){
+				output += s.getTabelle().get(i).toString();
+				for(int j = 0; j < s.getTabelle().get(i).getVincente().length; j++)
+					output += s.getTabelle().get(i).getVincente()[j] + "#";
 			}
+			
 			output += s.getTabellone().toString();
 			for(int i = 0; i<s.getPremiDisponibili().length; i++)
 				output += s.getPremiDisponibili()[i] + "#";;

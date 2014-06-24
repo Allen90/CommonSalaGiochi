@@ -145,8 +145,8 @@ public class Decoder {
 
 			ArrayList<Tabella> cartelle = new ArrayList<>();
 			ArrayList<Casella> temp = new ArrayList<>();
-			int[] vincente = new int[Tabella.N_RIGHE];
 			for(int i = 0; i < nTabelle; i++){
+				int[] vincente = new int[Tabella.N_RIGHE];
 				for(int j = 0; j < Tabella.DIM_TAB; j++){
 					String s1 = st.nextToken();
 					if(Integer.parseInt(s1) == 0)
@@ -159,8 +159,8 @@ public class Decoder {
 //					System.out.println(s2);
 
 				}
-				for(int j = 0; j < Tabella.N_RIGHE; j++)
-					vincente[j] = Integer.parseInt(st.nextToken());
+				for(int k = 0; k < Tabella.N_RIGHE; k++)
+					vincente[k] = Integer.parseInt(st.nextToken());
 				Tabella t = new Tabella(temp, vincente);
 				cartelle.add(t);
 				temp.clear();
