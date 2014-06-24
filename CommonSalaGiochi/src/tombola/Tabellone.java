@@ -1,11 +1,12 @@
 package tombola;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 import tombola.Casella;
 
-public class Tabellone { 
+public class Tabellone implements Serializable{ 
 	
 	public static final int N_RIGHE = 9;
 	public static final int N_COLONNE = 10;

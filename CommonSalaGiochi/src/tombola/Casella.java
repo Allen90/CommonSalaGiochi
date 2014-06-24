@@ -1,6 +1,8 @@
 package tombola;
 
-public class Casella {
+import java.io.Serializable;
+
+public class Casella implements Serializable{
 
 	private int numero;
 	private boolean estratto;
