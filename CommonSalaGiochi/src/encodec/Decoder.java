@@ -25,9 +25,6 @@ import userModel.Registrazione;
 
 public class Decoder {
 
-	int cacca;
-
-
 	private static StringTokenizer st;
 	//DECODE GENERALI
 
@@ -102,6 +99,13 @@ public class Decoder {
 		return classifica;
 	}
 
+	public static int clientAggCrediti(String s){
+		st = new StringTokenizer(s, "#");
+		st.nextToken();	//rimuovo tag AGGCREDITI
+		
+		return Integer.parseInt(st.nextToken());
+	}
+	
 	//SLOT MACHINE
 
 	public static Rollata clientRollata(String s){

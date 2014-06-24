@@ -9,6 +9,7 @@ import slot.Rollata;
 import tombola.SituazioneTombola;
 import tombola.Tabella;
 import userModel.EntryClassifica;
+import userModel.InfoHome;
 import userModel.Utente;
 
 public class Encoder {
@@ -24,7 +25,7 @@ public class Encoder {
 	public static final String clientAggiornaTombola = "AGGTOMBOLA#";
 	public static final String clientAggiornaClassifica = "AGGCLASS#";
 	public static final String clientAggiornaCrediti = "AGGCREDITI#";
-	
+	public static final String clientAggCrediti = "AGGCREDITI#";
 	public static final String clientLogout = "LOGOUT#";
 
 	public static String clientLogin(String username, String password){
@@ -76,7 +77,14 @@ public class Encoder {
 		return output;
 	}
 
-
+	public static String serverAggCrediti(int crediti){
+		String output = new String(ok);
+		
+		output += "AGGCREDITI#";
+		output += crediti + "#";
+		return output;
+	}
+	
 	//SLOT MACHINE
 
 	public static String serverRolla(Rollata r){
