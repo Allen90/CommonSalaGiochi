@@ -14,6 +14,12 @@ import userModel.EntryClassifica;
 import userModel.InfoHome;
 import userModel.Utente;
 
+/**
+ * interfaccia del server rmi controller, definisce tutti i metodi che verranno poi richiamati dal client
+ * @author fritz
+ *
+ */
+
 public interface RmiTaskControl extends Remote{
 	public Rollata rolla() throws RemoteException, EccezioneUtente;
 	public SituazioneTombola aggTombola()  throws RemoteException;

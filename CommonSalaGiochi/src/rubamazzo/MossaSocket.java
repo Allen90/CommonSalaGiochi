@@ -1,5 +1,10 @@
 package rubamazzo;
-
+/**
+ * classe utlizzata per l'invio di una mossa rubamazzo attraverso il socket
+ * viene richiamata dall'ecoder per trasformarla in una stringa
+ * @author fritz
+ *
+ */
 public class MossaSocket {
 	private Mossa m;
 	private int numPartita;

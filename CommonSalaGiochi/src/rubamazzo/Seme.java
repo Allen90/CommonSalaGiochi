@@ -1,5 +1,10 @@
 package rubamazzo;
-
+/**
+ * enum utilizzato dalle singole carte per 
+ * l'assegnazione del seme
+ * @author fritz
+ *
+ */
 public enum Seme {
 	
 	COPERTA("VERT"),

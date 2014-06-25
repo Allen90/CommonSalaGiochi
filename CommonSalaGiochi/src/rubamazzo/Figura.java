@@ -1,5 +1,10 @@
 package rubamazzo;
-
+/**
+ * enum utilizzato dalle singole carte per 
+ * l'assegnazione della figura
+ * @author fritz
+ *
+ */
 public enum Figura {
 	
 	COPERTA(0, "RETRO"),

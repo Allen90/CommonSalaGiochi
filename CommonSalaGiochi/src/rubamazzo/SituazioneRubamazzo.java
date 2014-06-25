@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import eccezioni.EccezioneRubamazzo;
-
+/**
+ * classe  che contiene tutte le informazioni dell'utente di una partita rubamazzo, viene richiesto e 
+ * poi utilizzato dal client nell'interfaccia grafica per aggiornare tutti i dati all'interno di essa
+ */
 public class SituazioneRubamazzo implements Serializable{
 
 	private static final long serialVersionUID = 1L;

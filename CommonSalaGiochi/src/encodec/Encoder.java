@@ -12,6 +12,12 @@ import userModel.EntryClassifica;
 import userModel.InfoHome;
 import userModel.Utente;
 
+/**
+ * classe per la gestione della costruzione delle stringhe utilizzate dal server e il client durante l'invio
+ * 
+ * @author fritz
+ *
+ */
 public class Encoder {
 
 	public static final String ok = "OK#";

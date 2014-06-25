@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import tombola.Casella;
-
+/**
+ * classe che contiene la logica della tombola
+ * con l'estrazione dei numeri da esso
+ */
 public class Tabellone implements Serializable{ 
 	
 	public static final int N_RIGHE = 9;

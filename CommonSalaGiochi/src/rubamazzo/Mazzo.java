@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
 
+/**
+ * classe utilizzata per rappresentare un mazzo di carte
+ * permette l'estrazione di una singola carta da esso
+ * @author fritz
+ *
+ */
 class Mazzo {
 	
 	private LinkedList<Carta> carte = null;

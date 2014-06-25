@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import userModel.Utente;
 import eccezioni.EccezioneRubamazzo;
 
+
+/**
+ * classe utilizzata per rappresentare un singolo giocatore di una partita rubamazzo
+ * all'interno contiene i metodi necessari per giocare la propria mano e per l'eventuale furto di
+ * un bottino avversario
+ * @author fritz
+ *
+ */
 public class GiocatoreRubamazzo {
 
 	private ArrayList<Carta> bottino = null;
@@ -52,6 +60,10 @@ public class GiocatoreRubamazzo {
 		}
 	}
 	
+	/**
+	 * mette una carta nulla alla fine del bottino
+	 * in modo che il bottino non sia mai vuoto
+	 */
 	private void fondoBottino(){
 		bottino.add(0, new Carta());
 	}

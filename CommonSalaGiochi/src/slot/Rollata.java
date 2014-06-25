@@ -1,7 +1,11 @@
 package slot;
 
 import java.io.Serializable;
-
+/**
+ * classe che contiene tutte le informazioni di una singola giocata alla slot machine
+ * @author fritz
+ *
+ */
 public class Rollata implements Serializable{
 
 	private static final long serialVersionUID = 1L;

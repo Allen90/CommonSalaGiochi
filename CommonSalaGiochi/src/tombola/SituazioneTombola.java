@@ -2,7 +2,12 @@ package tombola;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+/**
+ * classe che contiene tutte le informazioni della partita dell'utente ad essa associato
+ * viene utilizzato dal client per aggiornare i dati della gui
+ * @author fritz
+ *
+ */
 public class SituazioneTombola implements Serializable{
 
 	private int numeroPartita = -1;

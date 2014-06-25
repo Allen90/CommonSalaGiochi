@@ -6,7 +6,11 @@ import java.util.Random;
 
 import tombola.Casella;
 import tombola.Tabellone;
-
+/**
+ * classe che rappresenta la singola tabellina della tombola
+ * @author fritz
+ *
+ */
 public class Tabella implements Serializable{
 	
 	public static final int N_RIGHE = 3;
@@ -105,7 +109,11 @@ public class Tabella implements Serializable{
 	public void setEstratto(int riga, int colonna, boolean estratto){
 		tabella[riga][colonna].setEstratto(estratto);
 	}
-	
+	/**
+	 * passatogli il numero estratto, controlla se è presete all'interno di essa
+	 * aggiorna i vincenti associati
+	 * @param estratto
+	 */
 	public void controllaEstratto(int estratto){
 		for(int i = 0; i<N_RIGHE; i++)
 			for(int j = 0; j<N_COLONNE; j++)
@@ -119,7 +127,11 @@ public class Tabella implements Serializable{
 		else return numeroTrue;
 	}
 	
-	//TODO: controllo per le tombolel
+	/**
+	 * aggiorna con ogni estratto il relativo vincente
+	 * se una riga ha gia' vinto un premio viene settata ad 1
+	 * utilizzato per itentificare una riga in cui non si può più vincere nulla
+	 */
 	private void setVincente(){
 		int contaTrue = 0;
 		for(int i = 0; i < N_RIGHE; i++)

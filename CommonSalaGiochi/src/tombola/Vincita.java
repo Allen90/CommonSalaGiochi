@@ -1,5 +1,10 @@
 package tombola;
-
+/**
+ * classe utilizzata dall'encoder lato client per comunicare al server 
+ * la volontà di vincere qualcosa 
+ * @author fritz
+ *
+ */
 public class Vincita {
 	private int tipoVincita;
 	private int indiceCartella;

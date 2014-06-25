@@ -1,5 +1,10 @@
 package slot;
-
+/**
+ * singleton per la gestione del jackpot
+ * che verrà incrementato ad ogni perdita
+ * @author fritz
+ *
+ */
 public class Jackpot {
 
 	private static Jackpot j = null;

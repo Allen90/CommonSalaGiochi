@@ -3,7 +3,13 @@ package rubamazzo;
 import java.util.ArrayList;
 
 import eccezioni.EccezioneRubamazzo;
-
+/**
+ * classe che contiene tutta la logica relativa al rubamazzo
+ * contiene i metodi che si occupano di distribuire le carte ed effettuare
+ * tutti i tipi di mosse lecite 
+ * @author fritz
+ *
+ */
 public class TavoloRubamazzo {
 
 	private ArrayList<Carta> banco = null;
@@ -57,6 +63,12 @@ public class TavoloRubamazzo {
 		}
 		
 	}
+	
+	/**
+	 * controllo della mossa sulla carta giocata, rispetto a le carte presenti nel banco
+	 * @param giocata
+	 * @return
+	 */
 
 	private boolean controllaMossa(Carta giocata){
 		for(Carta c: banco){
@@ -67,17 +79,37 @@ public class TavoloRubamazzo {
 		}
 		return true;
 	}
+	
+	/**
+	 * controllo della mossa sulla carta giocata e sulla carta selezionata nel banco
+	 * @param giocata
+	 * @param inBanco
+	 * @return
+	 */
 
 	private boolean controllaMossa(Carta giocata, Carta inBanco){
 		if(giocata.confronta(inBanco)) return true;
 		else return false;
 	}
+	
+	/**
+	 * controllo della mossa sulla carta giocata e sulla carte selezionata nel banco
+	 * @param giocata
+	 * @param inBanco
+	 * @return
+	 */
 
 	private boolean controllaMossa(Carta giocata, ArrayList<Carta> inBanco){
 		if(giocata.confronta(inBanco))	return true;
 		else return false;
 	}
 
+	/**
+	 * controllo della mossa sulla carta giocata e sul bottino avversario selezionato
+	 * @param giocata
+	 * @param bersaglio
+	 * @return
+	 */
 	private boolean controllaMossa(Carta giocata, GiocatoreRubamazzo bersaglio){
 		boolean ok;
 		try{
@@ -91,6 +123,13 @@ public class TavoloRubamazzo {
 		return ok;		
 	}
 
+	
+	/**
+	 *  mette se possibile, la carta selezionata nel banco 
+	 * @param giocata
+	 * @param username
+	 * @throws EccezioneRubamazzo
+	 */
 	public void daGiocatoreABanco(Carta giocata, String username) throws EccezioneRubamazzo{
 		int i;
 		if(!controllaMossa(giocata)){
@@ -114,7 +153,13 @@ public class TavoloRubamazzo {
 				banco.add(giocata);
 		}
 	}
-
+	/**
+	 * se possibile prende con la carta selezionata la carta del banco selezionata e le inserisce nel bottino personale
+	 * @param giocata
+	 * @param inBanco
+	 * @param username
+	 * @throws EccezioneRubamazzo
+	 */
 	public void daBancoAGiocatore(Carta giocata, Carta inBanco, String username) throws EccezioneRubamazzo{
 		int i;
 		ArrayList<Carta> bottino = null;
@@ -135,7 +180,13 @@ public class TavoloRubamazzo {
 			giocatori.get(i).aggiungiBottino(bottino);
 		}
 	}
-
+	/**
+	 * se possibile prende con la carta selezionata le carte del banco selezionata e le inserisce nel bottino personale
+	 * @param giocata
+	 * @param inBanco
+	 * @param username
+	 * @throws EccezioneRubamazzo
+	 */
 	public void daBancoAGiocatore(Carta giocata, ArrayList<Carta> inBanco, String username) throws EccezioneRubamazzo{
 		int i;
 		ArrayList<Carta> bottino = null;
@@ -157,7 +208,15 @@ public class TavoloRubamazzo {
 			giocatori.get(i).aggiungiBottino(bottino);
 		}
 	}
-
+	
+	/**
+	 * se possibile prende con la carta selezionata la carta del banco selezionata e le inserisce nel bottino personale
+	 * @param username
+	 * @param giocata
+	 * @param bersaglio
+	 * @throws EccezioneRubamazzo
+	 */
+	
 	public void daGiocatoreAGiocatore(String username, Carta giocata, int bersaglio) throws EccezioneRubamazzo{
 		int i;
 		ArrayList<Carta> bottino = null;

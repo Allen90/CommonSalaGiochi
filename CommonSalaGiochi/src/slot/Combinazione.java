@@ -1,7 +1,11 @@
 package slot;
 
 import java.util.Random;
-
+/**
+ * classe utilizzata gestire una singola combinazione della slot machine
+ * @author fritz
+ *
+ */
 public class Combinazione {
 
 	private Random gen = new Random();

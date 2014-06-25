@@ -3,7 +3,12 @@ package tombola;
 import java.util.ArrayList;
 
 import userModel.Utente;
-
+/**
+ * classe che rappresenta un singolo giocatore ditombola
+ * con all'interno e proprie tabelle
+ * @author fritz
+ *
+ */
 public class GiocatoreTombola {
 	
 	private ArrayList<Tabella> cartelle = null;

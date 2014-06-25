@@ -1,6 +1,11 @@
 package rubamazzo;
 
 import java.util.ArrayList;
+/**
+ * rappresenta la singola mossa effettuata dalll'utente
+ * @author fritz
+ *
+ */
 
 public class Mossa {
 

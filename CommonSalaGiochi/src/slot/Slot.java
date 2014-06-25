@@ -1,5 +1,9 @@
 package slot;
-
+/**
+ * classe che gestisce le estrazioni
+ * @author fritz
+ *
+ */
 public class Slot {
 
 	private Combinazione c = null;

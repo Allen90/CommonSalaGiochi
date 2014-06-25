@@ -22,7 +22,12 @@ import userModel.EntryClassifica;
 import userModel.InfoHome;
 import userModel.Login;
 import userModel.Registrazione;
-
+/**
+ * classe per la gestione della decodifica delle stringhe ricevute dal client e dal server
+ * per poter ricostruire l'oggetto originariamente inviato
+ * @author fritz
+ *
+ */
 public class Decoder {
 
 	private static StringTokenizer st;
@@ -34,6 +39,7 @@ public class Decoder {
 		return output;
 	}
 
+	
 	public static InfoHome clientAccesso(String s) throws ParseException{ //sia login che registrazione
 		st = new StringTokenizer(s,"#");
 		InfoHome i = null;

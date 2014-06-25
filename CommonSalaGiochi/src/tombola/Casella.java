@@ -1,7 +1,13 @@
 package tombola;
 
 import java.io.Serializable;
-
+/**
+ * classe che rappresenta una singola casellina del tabellone
+ * o di una tabella, rappresentata da un intero o da un boolean
+ * per identificare se è stato estratto
+ * @author fritz
+ *
+ */
 public class Casella implements Serializable{
 
 	private int numero;
