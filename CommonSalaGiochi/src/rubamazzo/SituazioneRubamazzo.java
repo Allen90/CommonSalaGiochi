@@ -57,9 +57,9 @@ public class SituazioneRubamazzo implements Serializable{
 		for(int i = 0; i< t.getGiocatori().size(); i++)
 			if(t.getGiocatori().get(i).getUtente().getUsername().equals(g.getUtente().getUsername()))
 				mano = t.getGiocatori().get(i).getMano();
+		bottini.removeAll(bottini);
 		for(GiocatoreRubamazzo i: t.getGiocatori())
 			try {
-				bottini.removeAll(bottini);
 				bottini.add(i.getPrimaBottino());
 			} catch (EccezioneRubamazzo e) {
 			}
@@ -95,9 +95,9 @@ public class SituazioneRubamazzo implements Serializable{
 	}
 	
 	public ArrayList<Carta> getBottiniAltrui(){
-		ArrayList<Carta> temp = new ArrayList<>(bottini);
-		if(getMioBottino() != null && getMioBottino() != null)
-			temp.remove(getMioBottino());
+		ArrayList<Carta> temp = new ArrayList<>();
+		temp.addAll(bottini);
+		temp.remove(bottini.get(mioIndice));
 		
 		return temp;
 	}

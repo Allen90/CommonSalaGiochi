@@ -165,7 +165,7 @@ public static String serverGiocoRubamazzo(boolean valido, int crediti){
 		String output = new String("MOSSA#");
 		output += nPartita + "#";
 		output += m.getTipoMossa() + "#";
-		output += m.getCartaGiocata() + "#";
+		output += m.getCartaGiocata();
 		switch(m.getTipoMossa()){
 		case 0:
 			break;

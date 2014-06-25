@@ -14,6 +14,7 @@ public class GiocatoreRubamazzo {
 	public GiocatoreRubamazzo(Utente u){
 		utente = u;
 		bottino = new ArrayList<Carta>();
+		bottino.add(new Carta());
 		mano = new ArrayList<Carta>();
 	}
 	
@@ -27,16 +28,32 @@ public class GiocatoreRubamazzo {
 
 	public Carta getPrimaBottino() throws EccezioneRubamazzo{
 		try{
-			return bottino.get(0);
+			return bottino.get(bottino.size()-1);
 		}catch(IndexOutOfBoundsException e){
 			throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
 		}
 	}
 	
-	public ArrayList<Carta> getBottino() throws EccezioneRubamazzo{
-		if(bottino.size() == 0)
+	public ArrayList<Carta> rubaBottino() throws EccezioneRubamazzo{
+		if(bottino.get(0).confrontaCarta(new Carta()))
 			throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
-		else return bottino;
+		else{
+			bottino.remove(0);
+			return bottino;
+		}
+	}
+	
+	public ArrayList<Carta> getBottino() throws EccezioneRubamazzo{
+		
+		if(getPrimaBottino().confrontaCarta(new Carta()))
+			throw new EccezioneRubamazzo("Il giocatore non ha bottino!");
+		else{
+			return bottino;
+		}
+	}
+	
+	private void fondoBottino(){
+		bottino.add(0, new Carta());
 	}
 	
 	public boolean giocaCarta(Carta giocata){
@@ -48,11 +65,19 @@ public class GiocatoreRubamazzo {
 	}
 	
 	public void aggiungiBottino(ArrayList<Carta> nuovoBottino){
-		bottino.addAll(0,nuovoBottino);
+		bottino.addAll(nuovoBottino);
+	}
+	
+	public void aggiungiBottino(Carta nuovoBottino){
+		bottino.add(nuovoBottino);
 	}
 	
 	public void azzeraBottino(){
-		bottino.removeAll(bottino);
+		int k = bottino.size();
+		for(int j = k-1; j >= 0; j--){
+			bottino.remove(j);
+		}
+		fondoBottino();
 	}
 	
 	public void pesca(Mazzo m) {

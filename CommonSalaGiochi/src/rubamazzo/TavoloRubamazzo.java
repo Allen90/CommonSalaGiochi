@@ -16,6 +16,7 @@ public class TavoloRubamazzo {
 	}
 
 	public boolean isFinita(){
+		finePartita = mazzoVuoto() && maniVuote();
 		return finePartita;
 	}
 
@@ -29,6 +30,13 @@ public class TavoloRubamazzo {
 		riempiBanco();
 	}
 
+	public boolean maniVuote(){
+		for(GiocatoreRubamazzo g: giocatori)
+			if(g.getMano().size() != 0)
+				return false;
+		return true;
+	}
+	
 	private boolean mazzoVuoto(){
 		if(mazzo.vuoto()) return true;
 		else return false;
@@ -36,21 +44,18 @@ public class TavoloRubamazzo {
 
 	public void riempiBanco(){
 		banco.addAll(mazzo.pesca(4));
-		finePartita = mazzoVuoto();
+		finePartita = isFinita();
 	}
 
-	public void daiCarteInizio(ArrayList<GiocatoreRubamazzo> giocatori){
-		for(GiocatoreRubamazzo g: giocatori){
-			g.pesca(mazzo, 3);
+	public boolean daiCarteInizio(ArrayList<GiocatoreRubamazzo> giocatori){
+		if(finePartita = isFinita() == true)
+			return false;
+		else{
+			for(GiocatoreRubamazzo g: giocatori)
+				g.pesca(mazzo, 3);
+			return true;
 		}
-		finePartita = mazzoVuoto();
-	}
-
-	public void daiCarte(ArrayList<GiocatoreRubamazzo> giocatori){
-		for(GiocatoreRubamazzo g: giocatori){
-			g.pesca(mazzo);
-		}
-		finePartita = mazzoVuoto();
+		
 	}
 
 	private boolean controllaMossa(Carta giocata){
@@ -97,14 +102,16 @@ public class TavoloRubamazzo {
 				if(giocatori.get(i).getUtente().getUsername().equals(username))
 					break;
 			giocatori.get(i).giocaCarta(giocata);
-			System.out.println("IN TAVOLO RUBAMAZZO - MANO POST MOSSA: ");
-			for(Carta c: giocatori.get(i).getMano())
-				System.out.println(c.toString());	
-			banco.add(giocata);
 			if(giocata.figura.valore == 1){
 				giocatori.get(i).aggiungiBottino(banco);
-				banco.removeAll(banco);
+				giocatori.get(i).aggiungiBottino(giocata);
+				int k = banco.size();
+				for(int j = k-1; j >= 0; j--){
+					banco.remove(j);
+				}
 			}
+			else
+				banco.add(giocata);
 		}
 	}
 
@@ -119,8 +126,8 @@ public class TavoloRubamazzo {
 					break;
 			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
-			bottino.add(giocata);
 			bottino.add(inBanco);
+			bottino.add(giocata);
 //			banco.remove(inBanco);
 			for(int j = 0; j < banco.size(); j++)
 				if(inBanco.confrontaCarta(banco.get(j)))
@@ -140,8 +147,8 @@ public class TavoloRubamazzo {
 					break;
 			giocatori.get(i).giocaCarta(giocata);
 			bottino = new ArrayList<Carta>();
-			bottino.add(giocata);
 			bottino.addAll(inBanco);
+			bottino.add(giocata);
 //			banco.removeAll(inBanco);
 			for(int j = 0; j < inBanco.size(); j++)
 				for(int k = 0; k < banco.size(); k++)
@@ -154,16 +161,35 @@ public class TavoloRubamazzo {
 	public void daGiocatoreAGiocatore(String username, Carta giocata, int bersaglio) throws EccezioneRubamazzo{
 		int i;
 		ArrayList<Carta> bottino = null;
-		if(!controllaMossa(giocata, giocatori.get(bersaglio)))
+		System.out.println(giocatori.get(bersaglio).getUtente().getUsername());
+		if(!controllaMossa(giocata, giocatori.get(bersaglio))){
 			throw new EccezioneRubamazzo("Mossa non legale!");	
+		}
 		else{
-			for(i = 0; i < giocatori.size(); i++)
+ 			for(i = 0; i < giocatori.size(); i++)
 				if(giocatori.get(i).getUtente().getUsername().equals(username))
 					break;
+ 			System.out.println("INDICE TROVATO "+ i);
 			giocatori.get(i).giocaCarta(giocata);
+			System.out.println("TOLTA CARTA DA MANO");
 			bottino = new ArrayList<Carta>();
+			System.out.println("NEW BOTTINO");
+			Carta temp;
+			System.out.println("CARTA TEMP");
+			System.out.println("BERSAGLIO: " + bersaglio);
+			int k = giocatori.get(bersaglio).getBottino().size();
+			System.out.println("STO PER ENTRARE NEL CICLO RIMOZIONE");
+			for(int j = k-1; j > 0; j--){
+				temp = giocatori.get(bersaglio).getBottino().get(j);
+				bottino.add(temp);
+				System.out.println("HO AGGIUNTO LA CARTA "+ temp.toString());
+				giocatori.get(bersaglio).getBottino().remove(j);
+				System.out.println("HO RIMOSSO LA CARTA "+ temp.toString());
+			}
 			bottino.add(giocata);
-			bottino.addAll(giocatori.get(bersaglio).getBottino());
+			System.out.println("STAMPO BOTTINO RUBATO CON LA MIA CARTA AL SEGUITO");
+			for(Carta c: bottino)
+				System.out.println(c.toString());
 			giocatori.get(bersaglio).azzeraBottino();
 			giocatori.get(i).aggiungiBottino(bottino);
 		}
