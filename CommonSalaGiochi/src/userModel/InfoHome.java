@@ -34,5 +34,5 @@ public class InfoHome implements Serializable{
 	public String getCognome(){
 		return cognome;
 	}
-	
+
 }
