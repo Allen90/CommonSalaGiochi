@@ -17,11 +17,13 @@ public class Slot {
 	
 	public int getPremio(boolean reset){
 		int premio = 0;
+		j.incJackpot();
 		if(c.calcolaPremio() == 100){
 			if(j.getJackpot() > 100){
 				premio = j.getJackpot();
 				if(reset) j.resetJackpot();
 			}
+			else premio = c.calcolaPremio();
 		}
 		else 
 			premio = c.calcolaPremio();

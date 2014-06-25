@@ -36,7 +36,8 @@ public class Combinazione {
 		if(valori[0] == valori[2])
 			flags[2] = true;	
 		
-		
+		for(int i = 0; i<3; i++)
+			System.out.println("SONO IN COMBINAZIONE - ESTRATTI: " +valori[i] + " ");
 		if(flags[0] == flags[1])
 			if(flags[0]){
 				if(valori[0] == 5) premio = 100;
@@ -46,7 +47,7 @@ public class Combinazione {
 				else premio = 0;			
 			}
 		else premio = 10;
-		
+		System.out.println("SONO IN COMBINAZIONE - PREMIO: "+premio);
 		return premio;
 	}
 
