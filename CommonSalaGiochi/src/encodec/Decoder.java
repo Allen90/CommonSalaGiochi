@@ -307,8 +307,8 @@ public class Decoder {
 		st = new StringTokenizer(s,"#");
 		String response = st.nextToken();
 		if(response.equals("OK"))
-			return true;
-		else return false;
+			return false;
+		else return true;
 	}
 
 }

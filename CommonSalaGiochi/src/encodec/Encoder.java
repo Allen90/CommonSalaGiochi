@@ -79,8 +79,6 @@ public class Encoder {
 
 	public static String serverAggCrediti(int crediti){
 		String output = new String(ok);
-		
-		output += "AGGCREDITI#";
 		output += crediti + "#";
 		return output;
 	}
