@@ -1,5 +1,6 @@
 package rubamazzo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * rappresenta la singola mossa effettuata dalll'utente
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  */
 
-public class Mossa {
+public class Mossa implements Serializable{
 
 	private int tipoMossa = 0;
 	private Carta giocata = null;

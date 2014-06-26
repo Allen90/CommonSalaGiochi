@@ -1,5 +1,6 @@
 package rubamazzo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
@@ -10,7 +11,7 @@ import java.util.Collections;
  * @author fritz
  *
  */
-class Mazzo {
+class Mazzo implements Serializable{
 	
 	private LinkedList<Carta> carte = null;
 	

@@ -1,5 +1,6 @@
 package rubamazzo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -9,7 +10,7 @@ import java.util.StringTokenizer;
  *
  */
 
-public class Carta{
+public class Carta implements Serializable{
 	final Seme seme;
 	final Figura figura;
 

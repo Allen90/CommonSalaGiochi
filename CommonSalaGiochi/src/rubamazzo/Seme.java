@@ -1,11 +1,14 @@
 package rubamazzo;
+
+import java.io.Serializable;
+
 /**
  * enum utilizzato dalle singole carte per 
  * l'assegnazione del seme
  * @author fritz
  *
  */
-public enum Seme {
+public enum Seme implements Serializable{
 	
 	COPERTA("VERT"),
 	SPA("SPA"), 

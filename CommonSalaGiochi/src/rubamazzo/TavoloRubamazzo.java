@@ -1,5 +1,6 @@
 package rubamazzo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import eccezioni.EccezioneRubamazzo;
@@ -10,7 +11,7 @@ import eccezioni.EccezioneRubamazzo;
  * @author fritz
  *
  */
-public class TavoloRubamazzo {
+public class TavoloRubamazzo implements Serializable{
 
 	private ArrayList<Carta> banco = null;
 	private ArrayList<GiocatoreRubamazzo> giocatori = null;

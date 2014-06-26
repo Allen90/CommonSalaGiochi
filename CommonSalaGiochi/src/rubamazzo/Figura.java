@@ -1,11 +1,14 @@
 package rubamazzo;
+
+import java.io.Serializable;
+
 /**
  * enum utilizzato dalle singole carte per 
  * l'assegnazione della figura
  * @author fritz
  *
  */
-public enum Figura {
+public enum Figura implements Serializable{
 	
 	COPERTA(0, "RETRO"),
 	ASSO(1, "ASSO"),

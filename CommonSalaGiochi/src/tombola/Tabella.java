@@ -142,8 +142,14 @@ public class Tabella implements Serializable{
 				vincente[i] = statusVincita(contaTrue);
 				contaTrue = 0;
 			}else vincente[i] = 1;
-		
-		
+		contaTrue = 0;
+		for(int i = 0; i < N_RIGHE; i++)
+			for(int j = 0; j<N_COLONNE; j++)
+				if(isEstratto(i, j))
+					contaTrue++;
+		if(contaTrue == 15)
+			for(int i = 0; i < N_RIGHE; i++)
+				vincente[i] = 5;
 	}
 	
 	public void rigaVinta(int i){
